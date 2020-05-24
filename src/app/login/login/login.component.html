@@ -1,0 +1,72 @@
+<body class="authentication-bg authentication-bg-pattern">
+  <div class="account-pages mt-5 mb-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6 col-xl-5">
+          <div class="card bg-pattern">
+
+            <div class="card-body p-4">
+
+              <div class="text-center w-75 m-auto">
+                <a href="index.html">
+                  <h4>The Medicine</h4>
+                </a>
+              </div>
+              <!-- <ng-template [ngIf]="loginResponce==undefine" [ngIfElse]="elseblock">
+                <div>Login Successful</div>
+              </ng-template>
+      
+              <ng-template #elseblock>
+                <div>
+                  Invalid username/password
+                </div>
+              </ng-template> -->
+
+              <form #loginForm="ngForm" (ngSubmit)="loginUser(loginForm)">
+
+
+                <div class="form-group mb-3">
+                  <label for="userLoginId">User Name</label>
+                  <input class="form-control" ngModel  #userLoginId='ngModel' type="text" id="userName" name="userLoginId" required placeholder="Enter your user name">
+                  <span *ngIf="!userLoginId.valid && (userLoginId.touched || userLoginId.dirty)" class="text-danger small">
+                    <small *ngIf='userLoginId.errors["required"]'>User name required</small>
+                  </span>
+                </div>
+                <div class="form-group mb-3">
+                  <label for="userName">Password</label>
+                  <input class="form-control" ngModel  #password='ngModel' type="password" id="password" name="password" required placeholder="Enter your password">
+               
+                  <span *ngIf="!password.valid && (password.touched || password.dirty)" class="text-danger small">
+                    <small *ngIf='password.errors["required"]'>password required</small>
+                  </span>
+                </div>
+
+
+                <div class="form-group mb-0 text-center">
+                  <button class="btn btn-primary btn-block" [disabled]="!loginForm.valid" type="submit"> Log In
+                  </button>
+                </div>
+
+              </form>
+
+            </div> <!-- end card-body -->
+          </div>
+          <!-- end card -->
+
+          <div class="row mt-3">
+            <div class="col-12 text-center">
+              <p> <a href="#" class="text-white-50 ml-1" [routerLink]="['/forgetPassword']" routerLinkActive="router-link-active"  (click)="forgotPassword()">Forgot your password?</a></p>
+              <p class="text-white-50">Don't have an account? <a href="#"   [routerLink]="['/ragisterUser']" routerLinkActive="router-link-active" (click)="ragisterUser()" class="text-white ml-1"><b>Sign
+                    Up</b></a></p>
+            </div> <!-- end col -->
+          </div>
+          <!-- end row -->
+
+        </div> <!-- end col -->
+      </div>
+      <!-- end row -->
+    </div>
+    <!-- end container -->
+  </div>
+  <!-- end page -->
+</body>
