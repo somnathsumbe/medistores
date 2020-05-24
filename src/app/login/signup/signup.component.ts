@@ -1,20 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { NgForm } from "@angular/forms";
+import { LoginService } from "src/app/login/services/login.service";
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: "app-signup",
+  templateUrl: "./signup.component.html",
+  styleUrls: ["./signup.component.css"],
+  providers: [LoginService],
 })
 export class SignupComponent implements OnInit {
+  userType: string = "Investor";
+  loginResponce: any;
+  constructor(private _Router: Router, private _LoginService: LoginService) {}
 
-  constructor(private _Router:Router) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  loginPage = () => this._Router.navigate([""]);
+
+  ragisterForm(ragisterFormdata: any) {
+    console.log(ragisterFormdata.form.value);
+    debugger;
+    this.loginResponce = this._LoginService.ragisterUser(
+      ragisterFormdata.value
+    );
+    this.loginResponce
+      ? alert("Login Successful")
+      : alert("Invalid username/password");
+    ragisterFormdata.reset({
+      userType: "Investor",
+    });
   }
-
-  loginPage=()=>this._Router.navigate(['']);
-  
-
-
 }

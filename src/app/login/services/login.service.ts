@@ -11,11 +11,31 @@ export class LoginService {
 
   getLoginDetails(loginDetails) {
     this.http.post<any>(this.loginurl, loginDetails).subscribe((data) => {
-      return (data = data);
+      console.log("POST Request is successful ", data);
+      return data;
     });
   }
-}
 
+  ragisterUser(ragistrationUserdetails) {
+    debugger;
+    this.http
+      .post<any>(this.loginurl, ragistrationUserdetails)
+      .subscribe((data) => {
+        console.log("POST Request is successful ", data);
+        return data;
+      });
+  }
+
+  forgetPasswordfrom(forgetPassworddetails) {
+    debugger;
+    this.http
+      .post<any>(this.loginurl, forgetPassworddetails)
+      .subscribe((data) => {
+        console.log("POST Request is successful ", data);
+        return data;
+      });
+  }
+}
 // export class LoginService {
 //   baseUrl: string = "http://192.168.0.104/login";
 //   httpOptions: any = {
