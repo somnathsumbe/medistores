@@ -10,6 +10,8 @@ import { FooterComponent } from './login/footer/footer.component';
 import { ForgetpasswordComponent } from './login/forgetpassword/forgetpassword.component';
 import { SignupComponent } from './login/signup/signup.component';
 import { PagenotfoundComponent } from './login/pagenotfound/pagenotfound.component';
+import { DashbordComponent } from './dashbord/dashbord.component';
+
 
 
 @NgModule({
@@ -21,6 +23,7 @@ import { PagenotfoundComponent } from './login/pagenotfound/pagenotfound.compone
     ForgetpasswordComponent,
     SignupComponent,
     PagenotfoundComponent,
+    DashbordComponent,
 
   ],
   imports: [

@@ -26,8 +26,11 @@ loginResponce:any;
   ngOnInit(): void {}
 
   loginUser=(loginForm: any)=> {
-    this.loginResponce= this._LoginService.getLoginDetails(loginForm.value);
-    this.loginResponce? alert("Login Successful"):alert("Invalid username/password");
+     this.loginResponce= this._LoginService.getLoginDetails(loginForm.value);
+     this.loginResponce? alert("Login Successful"):alert("Invalid username/password");
+    if(this.loginResponce){
+    this._Router.navigate(['dashbord']);
+    }
     loginForm.reset();
   }
 

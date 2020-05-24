@@ -16,3 +16,26 @@ loginurl="http://192.168.0.104/login";
 })
   }
 }
+
+
+
+
+// export class LoginService {
+//   baseUrl: string = "http://192.168.0.104/login";
+//   httpOptions: any = {
+//     headers: new HttpHeaders({
+//       //'Content-Type':  'application/json',
+//       "Access-Control-Allow-Headers": "Content-Type",
+//       "Access-Control-Allow-Methods": "POST",
+//       "Access-Control-Allow-Origin": "*",
+//     }),
+//   };
+
+//   constructor(public http: HttpClient) {}
+
+//   getLoginDetails(loginDetails) {
+//     this.http.post<any>(this.baseUrl, loginDetails, {headers: this.httpOptions}).subscribe((data) => {
+//       return data;
+//     });
+//   }
+// }
