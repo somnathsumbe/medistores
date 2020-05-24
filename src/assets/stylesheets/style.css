@@ -45,9 +45,9 @@
 /* Global style */
 
 body.authentication-bg-pattern {
-    background-image: url('/images/bg-pattern.png') no-repeat center center fixed; 
+    background-image: url('../images/bg-pattern.png') no-repeat center center fixed; 
     background-color: #6658dd;
-	/* background: url('./images/bg-pattern.png') no-repeat center center fixed;  */
+	 /* background: url('./images/bg-pattern.png') no-repeat center center fixed;  */
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;

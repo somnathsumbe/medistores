@@ -1,24 +1,20 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class LoginService {
-loginurl="http://192.168.0.111:8080/login";
+  loginurl = "http://192.168.0.111:8080/login";
 
-  constructor(public http:HttpClient) { }
+  constructor(public http: HttpClient) {}
 
-  getLoginDetails(loginDetails){
-   this.http.post<any>(this.loginurl,loginDetails ).subscribe(data => {
-    return data;
-})
+  getLoginDetails(loginDetails) {
+    this.http.post<any>(this.loginurl, loginDetails).subscribe((data) => {
+      return (data = data);
+    });
   }
 }
-
-
-
 
 // export class LoginService {
 //   baseUrl: string = "http://192.168.0.104/login";
