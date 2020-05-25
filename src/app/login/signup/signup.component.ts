@@ -21,12 +21,12 @@ export class SignupComponent implements OnInit {
   ragisterForm(ragisterFormdata: any) {
     console.log(ragisterFormdata.form.value);
     debugger;
-    this.loginResponce = this._LoginService.ragisterUser(
-      ragisterFormdata.value
-    );
-    this.loginResponce
-      ? alert("Login Successful")
-      : alert("Invalid username/password");
+    this._LoginService.ragisterUser(ragisterFormdata.value).subscribe(data=>{
+      data;
+    });
+    // this.loginResponce
+    //   ? alert("Login Successful")
+    //   : alert("Invalid username/password");
     ragisterFormdata.reset({
       userType: "Dealer",
     });
