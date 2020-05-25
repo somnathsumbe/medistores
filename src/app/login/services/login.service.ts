@@ -7,6 +7,7 @@ import { HttpClient } from "@angular/common/http";
 export class LoginService {
   loginurl = "http://192.168.0.111:8080/login";
   userRegistration = "http://192.168.0.111:8080/userRegistration";
+  profilefromdata = "http://192.168.0.111:8080/updateProfile";
   constructor(public http: HttpClient) {}
   
   getLoginDetails(loginDetails) {
@@ -19,6 +20,10 @@ export class LoginService {
 
   forgetPasswordfrom(forgetPassworddetails) {
     return this.http.post<any>(this.loginurl, forgetPassworddetails);
+  }
+
+  profilefrom(forgetPassworddetails) {
+    return this.http.post<any>(this.profilefromdata, forgetPassworddetails);
   }
 }
 // export class LoginService {
