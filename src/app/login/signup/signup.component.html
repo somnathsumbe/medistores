@@ -1,79 +1,73 @@
-<body class="authentication-bg authentication-bg-pattern">
 
-  <div class="account-pages mt-5 mb-5">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6 col-xl-5">
-          <div class="card bg-pattern">
 
-            <div class="card-body p-4">
 
-              <div class="text-center w-75 m-auto">
-                <a href="index.html">
-                  The Medicine
-                  <!-- <span><img src="images/logo.png" alt="" class="logo" style="display: inherit;"></span> -->
-                </a>
-                <p class="text-muted mb-4 mt-3">Don't have an account? Create your account, it takes less than a minute
-                </p>
+<div class="container-scroller">
+  <div class="container-fluid page-body-wrapper full-page-wrapper">
+    <div class="content-wrapper d-flex align-items-center auth">
+      <div class="row flex-grow">
+        <div class="col-lg-4 mx-auto">
+          <div class="auth-form-light text-left p-5">
+            <div class="brand-logo">
+              <h3> The Medicine</h3>
+            </div>
+            <h4>New here?</h4>
+            <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
+            <form class="pt-3" #ragisterFormdata="ngForm" (ngSubmit)="ragisterForm(ragisterFormdata)">
+
+              <div class="form-group">
+                <input class="form-control form-control-lg" type="email" id="userLoginId" name="userLoginId" required
+                  ngModel #userLoginId='ngModel' placeholder="Email">
+                <span *ngIf="!userLoginId.valid && (userLoginId.touched || userLoginId.dirty)"
+                  class="text-danger small">
+                  <small *ngIf='userLoginId.errors["required"]'>Email address required</small>
+                </span>
               </div>
 
-              <form #ragisterFormdata="ngForm" (ngSubmit)="ragisterForm(ragisterFormdata)">
-
-                <div class="form-group">
-                  <label for="email">Email address</label>
-                  <input class="form-control" type="email" id="userLoginId" name="userLoginId" required ngModel #userLoginId='ngModel'
-                    placeholder="Enter your email">
-                    <span *ngIf="!userLoginId.valid && (userLoginId.touched || userLoginId.dirty)" class="text-danger small">
-                        <small *ngIf='userLoginId.errors["required"]'>Email address required</small>
-                      </span>
-                </div>
-
-                <div class="form-group">
-                  <label for="password">Password</label>
-                  <input class="form-control" type="password" name="password" required id="password" ngModel #password='ngModel'
-                    placeholder="Enter your password">
-                    <span *ngIf="!password.valid && (password.touched || password.dirty)" class="text-danger small">
-                        <small *ngIf='password.errors["required"]'>Password required</small>
-                      </span>
-                </div>
-
-
-                <div class="form-group">
-                  <div class="radio radio-info form-check-inline">
-                    <input type="radio" id="inlineRadio1"  name="userType"  value="Dealer" [(ngModel)]="userType" checked>
-                    <label for="inlineRadio1"> Dealer </label>
-                  </div>
-                  <div class="radio form-check-inline">
-                    <input type="radio" id="inlineRadio2"  name="userType"  value="Retailer" [(ngModel)]="userType">
-                    <label for="inlineRadio2"> Retailer </label>
+              <div class="form-group">
+                <input type="password" class="form-control form-control-lg" name="password" required id="password"
+                  ngModel #password='ngModel' placeholder="Password">
+                <span *ngIf="!password.valid && (password.touched || password.dirty)" class="text-danger small">
+                  <small *ngIf='password.errors["required"]'>Password required</small>
+                </span>
+              </div>
+              <div class="form-group">
+              <div class="form-group row">
+                <div class="col-sm-4">
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input type="radio" class="form-check-input" name="usertype" id="usertype" [(ngModel)]="userType" value="Dealer" checked=""> Dealer <i class="input-helper"></i></label>
                   </div>
                 </div>
-
-                <div class="form-group mb-0 text-center">
-                  <button class="btn btn-success btn-block" type="submit" [disabled]="!ragisterFormdata.valid"> Sign Up </button>
+                <div class="col-sm-5">
+                  <div class="form-check">
+                    <label class="form-check-label">
+                      <input type="radio" class="form-check-input" name="usertype" id="usertype" [(ngModel)]="userType" value="Retailer"> Retailer <i class="input-helper"></i></label>
+                  </div>
                 </div>
+              </div>
+              </div>
 
-              </form>
-
-            </div> <!-- end card-body -->
+              <!-- <div class="mb-4">
+                <div class="form-check">
+                  <label class="form-check-label text-muted">
+                    <input type="checkbox" class="form-check-input"> I agree to all Terms & Conditions </label>
+                </div>
+              </div> -->
+              <div class="mt-3">
+                <button class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" type="submit"
+                  [disabled]="!ragisterFormdata.valid">SIGN UP</button>
+              </div>
+              <div class="text-center mt-4 font-weight-light"> Already have an account? <a [routerLink]="['']"
+                  routerLinkActive="router-link-active" (click)="loginPage()" class="text-primary">Login</a>
+              </div>
+            </form>
           </div>
-          <!-- end card -->
-
-          <div class="row mt-3">
-            <div class="col-12 text-center">
-              <p class="text-white-50">Already have account? <a href="#" [routerLink]="['']"
-                  routerLinkActive="router-link-active" (click)="loginPage()" class="text-white ml-1"><b>Sign In</b></a>
-              </p>
-            </div> <!-- end col -->
-          </div>
-          <!-- end row -->
-
-        </div> <!-- end col -->
+        </div>
       </div>
-      <!-- end row -->
     </div>
-    <!-- end container -->
+    <!-- content-wrapper ends -->
   </div>
-  <!-- end page -->
+  <!-- page-body-wrapper ends -->
+</div>
 
-</body>
+

@@ -10,7 +10,12 @@ import { DashbordComponent } from './dashbord/dashbord.component';
 const routes: Routes = [
   { path: '', component: LoginComponent},
   // { path: 'loginPage', component: LoginComponent},
-  { path: 'dashbord', component: DashbordComponent},
+  { path: 'dashbord', 
+children:[
+  {path:'', component: DashbordComponent},
+  {path:'logout', component: LoginComponent},
+]
+},
   { path: 'forgetPassword', component: ForgetpasswordComponent},
   { path: 'ragisterUser', component: SignupComponent},
   { path: '**', component: PagenotfoundComponent},

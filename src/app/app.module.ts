@@ -11,6 +11,8 @@ import { ForgetpasswordComponent } from './login/forgetpassword/forgetpassword.c
 import { SignupComponent } from './login/signup/signup.component';
 import { PagenotfoundComponent } from './login/pagenotfound/pagenotfound.component';
 import { DashbordComponent } from './dashbord/dashbord.component';
+import { SidebarComponent } from './login/sidebar/sidebar.component';
+import { ProfileComponent } from './dashbord/profile/profile.component';
 
 
 
@@ -24,6 +26,8 @@ import { DashbordComponent } from './dashbord/dashbord.component';
     SignupComponent,
     PagenotfoundComponent,
     DashbordComponent,
+    SidebarComponent,
+    ProfileComponent,
 
   ],
   imports: [

@@ -2,3 +2,9 @@
 input.ng-invalid.ng-touched{
     border: red 1px solid;
 }
+
+.dropdown-item:hover, .dropdown-item:focus {
+    color: #16181b!important;
+    text-decoration: none;
+    background-color: #f8f9fa;
+}

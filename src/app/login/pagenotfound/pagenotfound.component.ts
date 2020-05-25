@@ -13,4 +13,6 @@ export class PagenotfoundComponent implements OnInit {
   ngOnInit(): void {
   }
   loginPage=()=>this._Router.navigate(['']);
+
+  dashbordPage=()=>this._Router.navigate(['dashbord']);
 }
