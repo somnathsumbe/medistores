@@ -1,1 +1,778 @@
-<p>dashbord works!</p>
+
+		<div class="wrapper">
+			<div class="container-fluid">
+<div class="row">
+		<div class="col-12">
+		<div class="row">
+			<div class="col-12">
+				<div class="card-box-tranparent">
+					<div class="page-title-box">
+						<h3>Business Details</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="card-box card-body border">
+			<form action="/admin/borrowerpersonal" method="post" data-parsley-validate="" novalidate="">
+				<h4 class="header-title mb-4">Personal Details</h4>
+				<div class="row">
+					<input type="hidden" name="id" value="4">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="fullname">First Name</label>
+							<input class="form-control" value="" type="text" name="firstname" id="firstname" placeholder="Enter your first name" required="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="fullname">Last Name</label>
+							<input class="form-control" value="" type="text" id="lastname" name="lastname" placeholder="Enter your last name" required="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="emailaddress"> Email Address </label>
+							<input class="form-control" type="email" value="erica.edflynn@gmail.com" id="email" name="email" required="" placeholder="Enter your email" readonly="">
+							<span id="email_error" style="display:none;">
+								<p class="orange" style="width: 100%;  color:red;">Email Already Exists !</p>
+							</span>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="dob">Date of Birth </label>
+							<input type="text" id="basic-datepicker" value="" name="dob" class="form-control flatpickr-input" placeholder="Select Date Of Birth" readonly="readonly">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Nationality </label>
+							<input type="text" name="nationality" value="" id="Nationality" class="form-control" placeholder="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Passport Number </label>
+							<input type="text" name="passportno" value="" id="passport_number" class="form-control" placeholder="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Passport Expiry Date</label>
+							<input type="text" id="basic-datepicker1" name="passportexpiry" value="" class="form-control" placeholder="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="buscitizen">US Citizen/ Resident for US Tax Purpose:</label><br>
+														<div class="radio radio-info form-check-inline">
+								<input type="radio" id="usyesradio" value="1" name="b_uscitizen">
+								<label for="inlineRadio1"> Yes </label>
+							</div>
+							<div class="radio form-check-inline">
+								<input type="radio" id="usnoradio" value="2" name="b_uscitizen" checked="">
+								<label for="inlineRadio2"> No </label>
+							</div>
+													</div>
+					</div>
+					<div class="col-md-12">
+						<div class="button-list">
+							<button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+							<button type="cancel" class="btn btn-secondary waves-effect waves-light">Cancel</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="card-box card-body border">
+			<form method="post" action="/admin/borrowerdirstake">
+				<input type="hidden" name="id" value="4">
+				<h4 class="header-title mb-4">Directors / Stakeholders Details</h4>
+				<div class="row">
+					<div class="col-12 mb-2">
+						<h5 class="header-title">Directors</h5>
+					</div>
+				</div>
+				<div class="directors">
+					
+					
+					
+					
+				</div>
+				<div class="row mb-2">
+					<div class="col-3">
+						<div class="row">
+							<div class="col-6">
+								<input type="number" id="dir_add_rows" class="form-control">
+							</div>
+							<div class="col-6">
+								<button type="button" class="btn btn-primary" id="dir_add_rows_btn">Add rows</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12 mb-2">
+						<h5 class="header-title">Stakeholders</h5>
+					</div>
+				</div>
+				<div class="stakeholders">
+					
+					
+					
+				</div>
+				<div class="row mb-2">
+					<div class="col-3">
+						<div class="row">
+							<div class="col-6">
+								<input type="number" id="stake_add_rows" class="form-control">
+							</div>
+							<div class="col-6">
+								<button type="button" class="btn btn-primary" id="stake_add_rows_btn">Add rows</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-12">
+					<div class="button-list">
+						<button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+						<button type="cancel" class="btn btn-secondary waves-effect waves-light">Cancel</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="card-box card-body border">
+			<form action="/admin/borrowerbusiness" method="post" data-parsley-validate="" novalidate="">
+				<h4 class="header-title mb-4">Business Details</h4>
+				<input type="hidden" name="id" value="4">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="bbusinessname">Business Name</label>
+							<input type="text" id="bbusinessname" value="dqwd" name="b_businessname" class="form-control" required="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="bbusinessname">Business Logo</label>
+							<input type="text" id="bbusinessname" value="" name="b_businesslogo" class="form-control" required="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="bdoincorporation">Launch Date</label>
+							<input type="text" id="basic-datepicker3" value="" name="b_doincorporation" class="form-control flatpickr-input" required="" readonly="readonly">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="bliceseno">License Number</label>
+							<input type="text" id="bliceseno" value="23423" name="b_liceseno" class="form-control" required="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="blicenseissuedby">License Issuing Authority</label>
+							<input type="text" id="blicenseissuedby" value="234234" name="b_licenseissuedby" class="form-control" required="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="blicensevalidity">License Validity</label>
+							<input type="text" id="basic-datepicker4" value="" name="b_licensevalidity" class="form-control flatpickr-input" required="" readonly="readonly">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="bbusinessactivity">Business Activity</label>
+							<input type="text" id="bbusinessactivity" value="234234" name="b_businessactivity" class="form-control" required="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="bnoofstaff">Number of Staff</label>
+							<select name="b_noofstaff" id="bnoofstaff" class="form-control">
+								<option value="24">51-100</option>
+																								<option value="22">1-10</option>
+																																<option value="23">11-50</option>
+																																																								<option value="25">101-250</option>
+																																<option value="26">251-500</option>
+																																<option value="27">500 or more</option>
+																							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="bwebsite">Website</label>
+							<input type="text" id="bwebsite" value="qwd" name="b_website" class="form-control" required="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="bemirates">Emirates</label>
+							<input type="text" id="bemirates" value="Sharjah" name="b_emirates" class="form-control" required="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="bindustry">Industry</label>
+							<select class="form-control" id="bindustry" name="b_industry">
+								<option value="E-Commerce">E-Commerce</option>
+								<option value="Business Development">Business Development</option>
+								<option value="Finance">Finance</option>
+								<option value="Marketing">Marketing</option>
+								<option value="Insurance">Insurance</option>
+								<option value="Small Business">Small Business</option>
+								<option value="Startup">Startup</option>
+								<option value="Operations Management">Operations Management</option>
+								<option value="Information Technology">Information Technology</option>
+								<option value="Business Development">Business Development</option>
+								<option value="Distribution">Distribution</option>
+								<option value="Restaurant">Restaurant</option>
+								<option value="Business Process">Business Process</option>
+								<option value="Logistics">Logistics</option>
+								<option value="Hospitality Industry">Hospitality Industry</option>
+								<option value="B2B Services">B2B Services</option>
+								<option value="Social Media Marketing">Social Media Marketing</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="bbusinesstype">Business Type</label>
+							<select class="form-control" id="bbusinesstype" name="b_businesstype">
+								<option value="LLP">LLP</option>
+								<option value="Pvt. Ltd.">Pvt. Ltd.</option>
+								<option value="Sole Proprietorship">Sole Proprietorship</option>
+								<option value="Partnership">Partnership</option>
+								<option value="Corporation">Corporation</option>
+								<option value="LLC">LLC</option>
+								<option value="Manufacturing">Manufacturing</option>
+								<option value="Merchandising">Merchandising</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="bpurpose">Purpose</label>
+							<input type="text" id="bpurpose" value="sdfsfdsdf" name="b_purpose" class="form-control" required="">
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="bintroduction">Introduction</label>
+							<textarea id="bintroduction" name="b_introduction" class="form-control" required="" rows="5"></textarea>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="form-group">
+							<label for="bwhoarewe">Who are we?</label>
+							<textarea id="bwhoarewe" name="b_whoarewe" class="form-control" required="" rows="5"></textarea>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="button-list">
+							<button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+							<button type="cancel" class="btn btn-secondary waves-effect waves-light">Cancel</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="card-box card-body border">
+			<form action="/admin/borroweraddress" method="post" data-parsley-validate="" novalidate="">
+				<h4 class="header-title mb-4">Address Details</h4>
+				<input type="hidden" name="id" value="4">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="bbusinessaddress">Business Address</label>
+							<input type="text" id="bbusinessaddress" value="ETA AL manara" name="b_businessaddress" class="form-control" required="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="bbusinesscity">Business City</label>
+							<input type="text" id="bbusinesscity" value="Dubai" name="b_businesscity" class="form-control" required="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="bbusinessstate">Business State</label>
+							<input type="text" id="bbusinessstate" value="Du" name="b_businessstate" class="form-control" required="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="bbusinesszip">Business Zip</label>
+							<input type="text" id="bbusinesszip" value="0" name="b_businesszip" class="form-control" required="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="bcountry">Country</label>
+							<input type="text" id="bcountry" value="United Arab Emirates" name="b_country" class="form-control" required="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="btelephone">Telephone Number</label>
+							<input type="number" id="btelephone" value="33-2423423" name="b_telephone" class="form-control" required="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="bpobox">PO Box</label>
+							<input type="number" id="bpobox" value="" name="b_pobox" class="form-control" required="">
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="button-list">
+							<button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+							<button type="cancel" class="btn btn-secondary waves-effect waves-light">Cancel</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="card-box card-body border">
+			<form method="post" action="/admin/borrowervencust">
+				<input type="hidden" name="id" value="4">
+				<h4 class="header-title mb-4">Vendors/ Customers Details</h4>
+				<div class="row">
+					<div class="col-12 mb-2">
+						<h5 class="header-title">Top Customers</h5>
+					</div>
+				</div>
+				<div class="top-customers">
+					
+					
+					
+					
+				</div>
+				<div class="row mb-2">
+					<div class="col-3">
+						<div class="row">
+							<div class="col-6">
+								<input type="number" id="tc_add_rows" class="form-control">
+							</div>
+							<div class="col-6">
+								<button type="button" class="btn btn-primary" id="tc_add_rows_btn">Add rows</button>
+							</div>
+						</div>
+					</div>
+					<div class="col-3"></div>
+					<div class="col-3"></div>
+					<div class="col-3"></div>
+				</div>
+				<div class="row">
+					<div class="col-12 mb-2">
+						<h5 class="header-title">Top Suppliers</h5>
+					</div>
+				</div>
+				<div class="top-suppliers">
+					
+					
+					
+				</div>
+				<div class="row mb-2">
+					<div class="col-3">
+						<div class="row">
+							<div class="col-6">
+								<input type="number" id="ts_add_rows" class="form-control">
+							</div>
+							<div class="col-6">
+								<button type="button" class="btn btn-primary" id="ts_add_rows_btn">Add rows</button>
+							</div>
+						</div>
+					</div>
+					<div class="col-3"></div>
+					<div class="col-3"></div>
+					<div class="col-3"></div>
+				</div>
+				<div class="col-md-12">
+					<div class="button-list">
+						<button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+						<button type="cancel" class="btn btn-secondary waves-effect waves-light">Cancel</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="card-box card-body border">
+			<form action="/admin/borrowerbank" method="post" data-parsley-validate="" novalidate="">
+				<div class="content">
+					<h4>Bank Details</h4>
+				</div>
+				<input type="hidden" name="id" value="4">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="phone">Bank Name </label> 
+							<input type="text" name="b_bankname" id="bankname" value="" class="form-control" placeholder="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="phone">Account number </label> 
+							<input type="text" name="b_accountno" id="accountno" value="" class="form-control" placeholder="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="city">IBAN NO</label> 
+							<input type="text" name="b_ibanno" id="ibanno" value="" class="form-control" placeholder="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="state">Swiftcode</label> 
+							<input type="text" name="b_swiftcode" value="" id="swiftcode" class="form-control" placeholder="Enter swiftcode">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="b_totdebit">Total Debit(Monthwise for last 6 months)</label>
+							<input type="text" value="" id="b_totdebit" name="b_totdebit" class="form-control">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="b_totcredit">Total Credit(Monthwise for last 6 months)</label>
+							<input type="text" value="" id="b_totcredit" name="b_totcredit" class="form-control">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label for="b_returncheques">Number of Cheque Returns in past 6 Months</label>
+							<input type="text" value="" id="b_returncheques" name="b_returncheques" class="form-control">
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="button-list">
+							<button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+							<button type="cancel" class="btn btn-secondary waves-effect waves-light">Cancel</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+				<div class="card-box card-body border">
+			<form action="/admin/borrowerytd" method="post" data-parsley-validate="" novalidate="">
+				<div class="content">
+					<h4>YTD (Year to Date) Data</h4>
+				</div>
+				<input type="hidden" name="id" value="4">
+				<div class="row">
+					<div class="col-12 mb-2">
+						<h5 class="header-title">YTD Data</h5>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<!-- <label>YTD Data</label> -->
+							<br>
+														<div class="radio radio-info form-check-inline">
+								<input type="radio" id="usyesradio" value="1" name="is_year">
+								<label for="inlineRadio1"> Available </label>
+							</div>
+							<div class="radio form-check-inline">
+								<input type="radio" id="usnoradio" value="2" name="is_year" checked="">
+								<label for="inlineRadio2"> Not Available </label>
+							</div>
+													</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>To Date</label> 
+							<input type="text" name="date" id="date" value="0000-00-00" class="form-control" placeholder="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Total Assets</label> 
+							<input type="text" name="asset" id="asset" value="" class="form-control" placeholder="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Total Sales</label> 
+							<input type="text" name="sales" value="" id="sales" class="form-control" placeholder="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Total Liabilities</label>
+							<input type="text" value="" id="liability" name="liability" class="form-control">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Gross Profit</label>
+							<input type="text" value="" id="gp" name="gp" class="form-control">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Equity</label>
+							<input type="text" value="" id="equity" name="equity" class="form-control">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Net</label><br>
+														<div class="row">
+								<div class="col-md-4">
+									<div class="radio radio-info form-check-inline">
+										<input type="radio" id="usyesradio" value="1" name="pl">
+										<label for="inlineRadio1"> Profit </label>
+									</div>
+									<div class="radio form-check-inline">
+										<input type="radio" id="usnoradio" value="2" name="pl" checked="">
+										<label for="inlineRadio2"> Loss </label>
+									</div>
+								</div>
+								<div class="col-md-8">
+									<input type="text" class="form-control" id="np" value="" name="np">
+								</div>
+							</div>
+													</div>
+					</div>
+					<div class="col-md-12 ytd_bankloans">
+						<div class="form-group row">
+							<label class="col-md-3">Number of Bank Loan(s)</label>
+							<div class="col-md-3">
+								<input type="number" id="ytd_no_bank_loans" class="form-control">
+							</div>
+						</div>
+																								</div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-12 mb-2">
+						<h5 class="header-title">2018</h5>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Total Assets</label> 
+							<input type="text" name="asset1" id="asset1" value="" class="form-control" placeholder="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Total Sales</label> 
+							<input type="text" name="sales1" value="" id="sales1" class="form-control" placeholder="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Total Liabilities</label>
+							<input type="text" value="" id="liability1" name="liability1" class="form-control">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Gross Profit</label>
+							<input type="text" value="" id="gp1" name="gp1" class="form-control">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Equity</label>
+							<input type="text" value="" id="equity1" name="equity1" class="form-control">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Net</label><br>
+														<div class="row">
+								<div class="col-md-4">
+									<div class="radio radio-info form-check-inline">
+										<input type="radio" id="usyesradio1" value="1" name="pl1">
+										<label for="inlineRadio3"> Profit </label>
+									</div>
+									<div class="radio form-check-inline">
+										<input type="radio" id="usnoradio1" value="2" name="pl1" checked="">
+										<label for="inlineRadio4"> Loss </label>
+									</div>
+								</div>
+								<div class="col-md-8">
+									<input type="text" class="form-control" id="np1" value="" name="np1">
+								</div>
+							</div>
+													</div>
+					</div>
+					<div class="col-md-12 a_bankloans">
+						<div class="form-group row">
+							<label class="col-md-3">Number of Bank Loan(s)</label>
+							<div class="col-md-3">
+								<input type="number" id="a_no_bank_loans" class="form-control">
+							</div>
+						</div>
+																								</div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-12 mb-2">
+						<h5 class="header-title">2017</h5>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Total Assets</label> 
+							<input type="text" name="asset2" id="asset2" value="" class="form-control" placeholder="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Total Sales</label> 
+							<input type="text" name="sales2" value="" id="sales2" class="form-control" placeholder="">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Total Liabilities</label>
+							<input type="text" value="" id="liability2" name="liability2" class="form-control">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Gross Profit</label>
+							<input type="text" value="" id="gp2" name="gp2" class="form-control">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Equity</label>
+							<input type="text" value="" id="equity2" name="equity2" class="form-control">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Net</label><br>
+														<div class="row">
+								<div class="col-md-4">
+									<div class="radio radio-info form-check-inline">
+										<input type="radio" id="usyesradio2" value="1" name="pl2">
+										<label for="inlineRadio5"> Profit </label>
+									</div>
+									<div class="radio form-check-inline">
+										<input type="radio" id="usnoradio2" value="2" name="pl2" checked="">
+										<label for="inlineRadio6"> Loss </label>
+									</div>
+								</div>
+								<div class="col-md-8">
+									<input type="text" class="form-control" id="np2" value="" name="np2">
+								</div>
+							</div>
+													</div>
+					</div>
+					<div class="col-md-12 b_bankloans">
+						<div class="form-group row">
+							<label class="col-md-3">Number of Bank Loan(s)</label>
+							<div class="col-md-3">
+								<input type="number" id="b_no_bank_loans" class="form-control">
+							</div>
+						</div>
+																								</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="button-list">
+							<button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+							<button type="cancel" class="btn btn-secondary waves-effect waves-light">Cancel</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+				
+		<div class="card-box card-body border">
+			<h4 class="header-title mb-4">Documents</h4>
+			<div class="row">
+				<div class="col-md-6 mb-4">
+					<div class="row">
+						<div class="col-sm-6 d-flex align-items-center">
+							<p class="mb-0"><b>Trade License</b> &nbsp;&nbsp;
+													</p>
+						</div>
+											</div>
+				</div>
+				<div class="col-md-6 mb-4">
+					<div class="row">
+						<div class="col-sm-6 d-flex align-items-center">
+							<p class="mb-0"><b>Business Profile</b> &nbsp;&nbsp;
+													</p>
+						</div>
+											</div>
+				</div>
+				<div class="col-md-6 mb-4">
+					<div class="row">
+						<div class="col-sm-6 d-flex align-items-center">
+							<p class="mb-0"><b>Audit Reports</b> &nbsp;&nbsp;
+													</p>
+						</div>
+											</div>
+				</div>
+				<div class="col-md-6 mb-4">
+					<div class="row">
+						<div class="col-sm-6 d-flex align-items-center">
+							<p class="mb-0"><b>Other Related Dcuments</b> &nbsp;&nbsp;
+													</p>
+						</div>
+											</div>
+				</div>
+			</div>
+			<!-- <div class="row">
+				<table class="table table-borderless table-hover table-centered m-0">
+					<thead class="thead-light">
+						<tr>
+							<th>Sr. No.</th>
+							<th>Particulars</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Copy of Passport with Visa</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Copy of Emirated ID</td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+				</div> -->
+		</div>
+		<div class="card-box card-body border">
+			<form action="/admin/borrowerstatus" method="post" data-parsley-validate="" novalidate="">
+				<h4 class="header-title mb-4">Action</h4>
+				<input type="hidden" name="id" value="4">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<div>
+								<label>Status</label>
+							</div>
+							<select class="form-control" name="status_radio">
+																<option value="1">Email Verified</option>
+								<option value="2">Accept Profile</option>
+								<option value="3">Reject Profile</option>
+															</select>
+						</div>
+					</div>
+					<div class="col-md-12">
+						<div class="button-list">
+							<button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+							<button type="cancel" class="btn btn-secondary waves-effect waves-light">Cancel</button>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	
+</div>
+
