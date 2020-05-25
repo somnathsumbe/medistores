@@ -18,16 +18,16 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   loginUser = (loginForm: any) => {
-    if (loginForm) {
-      this._Router.navigate(["dashbord"]);
-    }
+    // if (loginForm) {
+    //   this._Router.navigate(["dashbord"]);
+    // }
 
-    // this._LoginService.getLoginDetails(loginForm.value).subscribe((data) => {
-    //   data;
-    //   if (data) {
-    //     this._Router.navigate(["dashbord"]);
-    //   }
-    // });
+    this._LoginService.getLoginDetails(loginForm.value).subscribe((data) => {
+      data;
+      if (data) {
+        this._Router.navigate(["dashbord"]);
+      }
+    });
 
     // loginresponce ? alert("Login Successful") : alert("Invalid username/password");
     loginForm.reset();
