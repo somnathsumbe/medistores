@@ -10,7 +10,7 @@ import { LoginService } from "src/app/login/services/login.service";
   providers: [LoginService],
 })
 export class SignupComponent implements OnInit {
-  userType: string = "Investor";
+  userType: string = "Dealer";
   loginResponce: any;
   constructor(private _Router: Router, private _LoginService: LoginService) {}
 
@@ -28,7 +28,7 @@ export class SignupComponent implements OnInit {
       ? alert("Login Successful")
       : alert("Invalid username/password");
     ragisterFormdata.reset({
-      userType: "Investor",
+      userType: "Dealer",
     });
   }
 }

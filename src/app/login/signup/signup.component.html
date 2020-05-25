@@ -21,10 +21,10 @@
 
                 <div class="form-group">
                   <label for="email">Email address</label>
-                  <input class="form-control" type="email" id="emailid" name="emailid" required ngModel #emailid='ngModel'
+                  <input class="form-control" type="email" id="userLoginId" name="userLoginId" required ngModel #userLoginId='ngModel'
                     placeholder="Enter your email">
-                    <span *ngIf="!emailid.valid && (emailid.touched || emailid.dirty)" class="text-danger small">
-                        <small *ngIf='emailid.errors["required"]'>Email address required</small>
+                    <span *ngIf="!userLoginId.valid && (userLoginId.touched || userLoginId.dirty)" class="text-danger small">
+                        <small *ngIf='userLoginId.errors["required"]'>Email address required</small>
                       </span>
                 </div>
 
@@ -40,12 +40,12 @@
 
                 <div class="form-group">
                   <div class="radio radio-info form-check-inline">
-                    <input type="radio" id="inlineRadio1"  name="userType"  value="Investor" [(ngModel)]="userType" checked>
-                    <label for="inlineRadio1"> Investor </label>
+                    <input type="radio" id="inlineRadio1"  name="userType"  value="Dealer" [(ngModel)]="userType" checked>
+                    <label for="inlineRadio1"> Dealer </label>
                   </div>
                   <div class="radio form-check-inline">
-                    <input type="radio" id="inlineRadio2"  name="userType"  value="Business" [(ngModel)]="userType">
-                    <label for="inlineRadio2"> Business </label>
+                    <input type="radio" id="inlineRadio2"  name="userType"  value="Retailer" [(ngModel)]="userType">
+                    <label for="inlineRadio2"> Retailer </label>
                   </div>
                 </div>
 
