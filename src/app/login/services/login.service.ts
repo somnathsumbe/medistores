@@ -8,22 +8,27 @@ export class LoginService {
   loginurl = "http://192.168.0.111:8080/login";
   userRegistration = "http://192.168.0.111:8080/userRegistration";
   profilefromdata = "http://192.168.0.111:8080/updateProfile";
+  bankdetalsdata = "http://192.168.0.111:8080/saveBankDetails";
   constructor(public http: HttpClient) {}
   
   getLoginDetails(loginDetails) {
     return this.http.post<any>(this.loginurl, loginDetails);
   }
 
-  ragisterUser(ragistrationUserdetails) {
-    return this.http.post<any>(this.userRegistration, ragistrationUserdetails);
+  ragisterUser(ragisterUserdetails) {
+    return this.http.post<any>(this.userRegistration, ragisterUserdetails);
   }
 
   forgetPasswordfrom(forgetPassworddetails) {
     return this.http.post<any>(this.loginurl, forgetPassworddetails);
   }
 
-  profilefrom(forgetPassworddetails) {
-    return this.http.post<any>(this.profilefromdata, forgetPassworddetails);
+  profilefrom(profiledetails) {
+    return this.http.post<any>(this.profilefromdata, profiledetails);
+  }
+  bankDetailsfrom(bankDetailsddetails) {
+    debugger;
+    return this.http.post<any>(this.profilefromdata, bankDetailsddetails);
   }
 }
 // export class LoginService {

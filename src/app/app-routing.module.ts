@@ -5,17 +5,29 @@ import { PagenotfoundComponent } from './login/pagenotfound/pagenotfound.compone
 import { ForgetpasswordComponent } from './login/forgetpassword/forgetpassword.component';
 import { SignupComponent } from './login/signup/signup.component';
 import { DashbordComponent } from './dashbord/dashbord.component';
+import { ProfileComponent } from './dashbord/profile/profile.component';
+import { BankdetailsComponent } from './dashbord/bankdetails/bankdetails.component';
 
 
 const routes: Routes = [
-  { path: '', component: LoginComponent},
+  { path: '', component: DashbordComponent},
   // { path: 'loginPage', component: LoginComponent},
-  { path: 'dashbord', 
-children:[
-  {path:'', component: DashbordComponent},
-  {path:'logout', component: LoginComponent},
-]
-},
+  // {
+  //   path: "dashbord",
+  //   children: [
+  //     { path: "", component: DashbordComponent, pathMatch: "full" },
+  //     {
+  //       path: "profile",
+  //       children: [
+  //         { path: "", component: ProfileComponent, pathMatch: "full" },
+  //       ],
+  //     },
+
+  //   ],
+  // },
+
+  { path: "profile", component: ProfileComponent},
+  { path: "bankinfo", component: BankdetailsComponent},
   { path: 'forgetPassword', component: ForgetpasswordComponent},
   { path: 'ragisterUser', component: SignupComponent},
   { path: '**', component: PagenotfoundComponent},

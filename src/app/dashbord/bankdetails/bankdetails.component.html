@@ -1,0 +1,137 @@
+<div class="col-12">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Banks Details</h4>
+      <form class="form-sample" #bankDetails="ngForm" (ngSubmit)="bankDetailsData(bankDetails)">
+
+        <!-- <p class="card-description"> Bank Name </p> -->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="bankName">Bank Name</label>
+              <div class="col-sm-7">
+                <select class="form-control" id="bankName" name="bankName" ngModel #bankName='ngModel' required>
+                  <option>Select bank </option>
+                  <option *ngFor="let bank of Banks">{{bank}}</option>
+                </select>
+                <span *ngIf="!bankName.valid && (bankName.touched || bankName.dirty)" class="text-danger small">
+                  <small *ngIf='bankName.errors["required"]'>Bank Name required</small>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="address">Address</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control" id="address" name="address" ngModel #address='ngModel'
+                  required />
+                <span *ngIf="!address.valid && (address.touched || address.dirty)" class="text-danger small">
+                  <small *ngIf='address.errors["required"]'>Bank Address required</small>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="branchCode">Branch Code</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control" id="branchCode" name="branchCode" ngModel #branchCode='ngModel'
+                  required />
+                <span *ngIf="!branchCode.valid && (branchCode.touched || branchCode.dirty)" class="text-danger small">
+                  <small *ngIf='branchCode.errors["required"]'>Branch Code required</small>
+                </span>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="ifscCode">IFSC Code</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control" id="ifscCode" name="ifscCode" ngModel #ifscCode='ngModel'
+                  required />
+                <span *ngIf="!ifscCode.valid && (ifscCode.touched || ifscCode.dirty)" class="text-danger small">
+                  <small *ngIf='ifscCode.errors["required"]'>Bank IFSC Code required</small>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label">Post Code </label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control" required />
+                <span *ngIf="!ifscCode.valid && (ifscCode.touched || ifscCode.dirty)" class="text-danger small">
+                  <small *ngIf='ifscCode.errors["required"]'>Bank IFSC Code required</small>
+                </span>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="cityList">City</label>
+              <div class="col-sm-7">
+                <select class="form-control" id="cityList" name="cityList" ngModel #cityList='ngModel' required>
+                  <option>Select City</option>
+                  <option *ngFor="let City of Cityes" [value]="City">{{City}}</option>
+                </select>
+
+                <span *ngIf="!cityList.valid && (cityList.touched || cityList.dirty)" class="text-danger small">
+                  <small *ngIf='cityList.errors["required"]'>City required</small>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label">State</label>
+              <div class="col-sm-7">
+                <select class="form-control">
+                    <option>America</option>
+                    <option>Italy</option>
+                    <option>Russia</option>
+                    <option>Britain</option>
+                  </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label">Country</label>
+              <div class="col-sm-7">
+                <select class="form-control">
+                  <option>America</option>
+                  <option>Italy</option>
+                  <option>Russia</option>
+                  <option>Britain</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <button type="submit" class="btn btn-gradient-primary mr-2" desabled
+                [disabled]="!bankDetails.valid">Submit</button>
+              <button type="submit" class="btn btn-gradient-success mr-2">Edit</button>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

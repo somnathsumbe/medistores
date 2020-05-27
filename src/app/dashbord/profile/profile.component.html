@@ -1,76 +1,120 @@
-<div class="col-12 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Profile</h4>
-        <!-- <p class="card-description"> Basic form elements </p> -->
-        <form class="forms-sample" #profile="ngForm" (ngSubmit)="profileData(profile)">
-          <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input type="text" class="form-control" id="firstName" name="firstName" ngModel #firstName='ngModel' placeholder="First Name" required>
-          </div>
-          <div class="form-group">
-            <label for="middleName">Middle Name</label>
-            <input type="text" class="form-control" id="middleName"  name="middleName" ngModel #middleName='ngModel' placeholder="Middle Name " required>
-          </div>
-          <div class="form-group">
-            <label for="lastName">Last Name</label>
-            <input type="text" class="form-control" id="lastName" name="lastName" ngModel #lastName='ngModel'  placeholder="Last Name" required>
-          </div>
-          <div class="form-group">
-            <label for="userLoginId">Mobile Number</label>
-            <input type="tel" class="form-control" id="userLoginId" name="userLoginId" ngModel #userLoginId='ngModel'  placeholder="Email" required>
-          </div>
-          <div class="form-group">
-            <label for="dob">Date of Birth</label>
-            <input type="date" class="form-control" id="dob" name="dob" ngModel #dob='ngModel'  placeholder="Date of Birth" required>
-          </div>
-<!-- 
-          <div class="form-group">
-            <label for="exampleSelectGender">Gender</label>
-            <select class="form-control" id="exampleSelectGender">
-              <option>Male</option>
-              <option>Female</option>
-            </select>
-          </div> -->
-
-
-          <div class="form-group">
+<div class="col-12">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">User Profile</h4>
+      <form class="form-sample" #profile="ngForm" (ngSubmit)="profileData(profile)">
+        <p class="card-description"> Personal info </p>
+        <div class="row">
+          <div class="col-md-6">
             <div class="form-group row">
-              <div class="col-sm-4">
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="gender" id="gender" [(ngModel)]="gender" value="Male" checked=""> Male <i class="input-helper"></i></label>
-                </div>
+              <label class="col-sm-5 col-form-label" for="firstName">First Name</label>
+              <div class="col-sm-7">
+
+                <input type="text" class="form-control" id="firstName" name="firstName" ngModel #firstName='ngModel'
+                  placeholder="First Name" required>
+                <span *ngIf="!firstName.valid && (firstName.touched || firstName.dirty)" class="text-danger small">
+                  <small *ngIf='firstName.errors["required"]'>firstName required</small>
+                </span>
               </div>
-              <div class="col-sm-5">
-                <div class="form-check">
-                  <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="gender" id="gender" [(ngModel)]="gender" value="Female"> Female <i class="input-helper"></i></label>
-                </div>
-              </div>
-            </div>
-            </div>
-          <!-- <div class="form-group">
-            <label>File upload</label>
-            <input type="file" name="img[]" class="file-upload-default">
-            <div class="input-group col-xs-12">
-              <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-              <span class="input-group-append">
-                <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload Photo</button>
-              </span>
             </div>
           </div>
-          <div class="form-group">
-            <label for="exampleInputCity1">City</label>
-            <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">
-          </div> 
-          <div class="form-group">
-            <label for="exampleTextarea1">Textarea</label>
-            <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
-          </div>-->
-          <button type="submit" class="btn btn-gradient-primary mr-2" [disabled]="!profile.valid">Submit</button>
-          <button class="btn btn-light">Cancel</button>
-        </form>
-      </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="middleName">Middle Name</label>
+              <div class="col-sm-7">
+
+                <input type="text" class="form-control" id="middleName" name="middleName" ngModel #middleName='ngModel'
+                  placeholder="Middle Name " required>
+                <span *ngIf="!middleName.valid && (middleName.touched || middleName.dirty)" class="text-danger small">
+                  <small *ngIf='middleName.errors["required"]'>middleName required</small>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="lastName">Last Name</label>
+              <div class="col-sm-7">
+
+                <input type="text" class="form-control" id="lastName" name="lastName" ngModel #lastName='ngModel'
+                  placeholder="Last Name" required>
+
+                <span *ngIf="!lastName.valid && (lastName.touched || lastName.dirty)" class="text-danger small">
+                  <small *ngIf='lastName.errors["required"]'>lastName required</small>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label">Mobile Number</label>
+              <div class="col-sm-7">
+                <input type="tel" class="form-control" id="userLoginId" name="userLoginId" ngModel
+                  #userLoginId='ngModel' placeholder="Email" required>
+
+                <span *ngIf="!lastName.valid && (userLoginId.touched || userLoginId.dirty)" class="text-danger small">
+                  <small *ngIf='userLoginId.errors["required"]'>userLoginId required</small>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label">Gender</label>
+              <div class="col-sm-7">
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="gender" id="gender" [(ngModel)]="gender"
+                          value="Male" checked=""> Male <i class="input-helper"></i></label>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="gender" id="gender" [(ngModel)]="gender"
+                          value="Female"> Female <i class="input-helper"></i></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label">Date of Birth</label>
+              <div class="col-sm-7">
+                <input type="date" class="form-control" id="dob" name="dob" ngModel #dob='ngModel'
+                  placeholder="Date of Birth" required>
+
+                <span *ngIf="!dob.valid && (dob.touched || dob.dirty)" class="text-danger small">
+                  <small *ngIf='dob.errors["required"]'>dob required</small>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 ">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <button type="submit" class="btn btn-gradient-primary mr-2"
+                    [disabled]="!profile.valid">Submit</button>
+                  <button class="btn btn-light" (click)="resetProfile(profile)">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </form>
     </div>
   </div>
+</div>

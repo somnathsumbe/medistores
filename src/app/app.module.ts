@@ -13,6 +13,7 @@ import { PagenotfoundComponent } from './login/pagenotfound/pagenotfound.compone
 import { DashbordComponent } from './dashbord/dashbord.component';
 import { SidebarComponent } from './login/sidebar/sidebar.component';
 import { ProfileComponent } from './dashbord/profile/profile.component';
+import { BankdetailsComponent } from './dashbord/bankdetails/bankdetails.component';
 
 
 
@@ -28,6 +29,7 @@ import { ProfileComponent } from './dashbord/profile/profile.component';
     DashbordComponent,
     SidebarComponent,
     ProfileComponent,
+    BankdetailsComponent,
 
   ],
   imports: [
