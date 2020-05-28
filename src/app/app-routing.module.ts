@@ -10,22 +10,9 @@ import { BankdetailsComponent } from './dashbord/bankdetails/bankdetails.compone
 
 
 const routes: Routes = [
-  { path: '', component: DashbordComponent},
-  // { path: 'loginPage', component: LoginComponent},
-  // {
-  //   path: "dashbord",
-  //   children: [
-  //     { path: "", component: DashbordComponent, pathMatch: "full" },
-  //     {
-  //       path: "profile",
-  //       children: [
-  //         { path: "", component: ProfileComponent, pathMatch: "full" },
-  //       ],
-  //     },
-
-  //   ],
-  // },
-
+  { path: '', redirectTo:'loginPage', pathMatch:'full'},
+  { path: 'loginPage', component: LoginComponent},
+  { path: 'dashbord', component: DashbordComponent},
   { path: "profile", component: ProfileComponent},
   { path: "bankinfo", component: BankdetailsComponent},
   { path: 'forgetPassword', component: ForgetpasswordComponent},

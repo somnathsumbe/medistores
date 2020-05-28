@@ -9,6 +9,7 @@ export class LoginService {
   userRegistration = "http://192.168.0.111:8080/userRegistration";
   profilefromdata = "http://192.168.0.111:8080/updateProfile";
   bankdetalsdata = "http://192.168.0.111:8080/saveBankDetails";
+  islogin:boolean=true;
   constructor(public http: HttpClient) {}
   
   getLoginDetails(loginDetails) {
