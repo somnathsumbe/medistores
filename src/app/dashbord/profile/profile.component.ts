@@ -9,22 +9,27 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   gender = "Male";
-  profileForm:any;
-  constructor(private _LoginService:LoginService, private _Router:Router) {}
+  profileForm: any;
+  msgState: boolean = true;
+  errorMsg: string;
+  constructor(private _LoginService: LoginService, private _Router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
   profileData(profileform: any) {
-    this.profileForm=profileform.value;
-   this._LoginService.getLoginDetails(profileform.value).subscribe((data) => {
+    debugger;
+    this.profileForm = profileform.value;
+    this.profileForm["loginDetails"]={ "userLoginId": profileform.form.controls.userLoginId.value };
+
+    console.log("****************"+this.profileForm);
+    this._LoginService.profileForm(profileform.value).subscribe((data) => {
       data;
       if (data) {
-        alert("Profile Data Store Successfully");
-
+        this.errorMsg = "Profile data saved successfully"
       }
     });
   }
 
-  resetProfile(form){
+  resetProfile(form) {
     form.value.reset('');
-}
+  }
 }

@@ -13,30 +13,19 @@ import { Router } from "@angular/router";
 })
 export class LoginComponent implements OnInit {
   loginResponce: any;
+  errorMsg:string;
+  errorState:boolean=false;
   constructor(private _LoginService: LoginService, private _Router: Router) {}
 
   ngOnInit(): void {}
 
   loginUser = (loginForm: any) => {
-    debugger;
     if(this._LoginService.islogin){
-    if (loginForm) {
-      this._Router.navigate(["profile"]);
+      this._LoginService.getLoginDetails(loginForm.value).subscribe((data) => {
+        data ? this._Router.navigate(["profile"]) : this.errorState=true;
+        this.errorMsg="Invalid username/password";
+      });
     }
-  }
-
-    // if(this._LoginService.islogin){
-    //   debugger;
-    //   this._LoginService.getLoginDetails(loginForm.value).subscribe((data) => {
-    //     data;
-    //     if (data) {
-    //       this._Router.navigate(["dashbord"]);
-    //     }
-    //   });
-    // }
-
-
-    // loginresponce ? alert("Login Successful") : alert("Invalid username/password");
     loginForm.reset();
   };
 

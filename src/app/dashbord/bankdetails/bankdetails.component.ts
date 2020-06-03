@@ -82,7 +82,7 @@ export class BankdetailsComponent implements OnInit {
 
   bankDetailsData(bankform: any) {
     this._login
-      .bankDetailsfrom(bankform.value)
+      .bankDetailsForm(bankform.value)
       .subscribe((res) => (this.bankDetailsUserData = res));
   }
 }

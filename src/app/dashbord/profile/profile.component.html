@@ -1,6 +1,11 @@
 <div class="col-12">
   <div class="card">
     <div class="card-body">
+      <div class="alert alert-success alert-dismissible fade show"  *ngIf="msgState">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Message</strong> {{errorMsg}}
+      </div>
+
       <h4 class="card-title">User Profile</h4>
       <form class="form-sample" #profile="ngForm" (ngSubmit)="profileData(profile)">
         <p class="card-description"> Personal info </p>
@@ -101,8 +106,24 @@
             </div>
           </div>
 
+        </div>
+
           <div class="row">
-            <div class="col-md-12 ">
+            <div class="col-md-6">
+              <div class="form-group row">
+                <label class="col-sm-5 col-form-label" for="emailId">Email Id </label>
+                <div class="col-sm-7">
+  
+                  <input type="email" class="form-control" id="emailId" name="emailId" ngModel #emailId='ngModel'
+                    placeholder="Last Name" required>
+  
+                  <span *ngIf="!emailId.valid && (emailId.touched || emailId.dirty)" class="text-danger small">
+                    <small *ngIf='emailId.errors["required"]'>Email Id required</small>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 ">
               <div class="col-md-12">
                 <div class="form-group">
                   <button type="submit" class="btn btn-gradient-primary mr-2"
@@ -113,7 +134,7 @@
             </div>
           </div>
           
-        </div>
+       
       </form>
     </div>
   </div>

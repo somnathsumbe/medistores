@@ -12,23 +12,35 @@ import { LoginService } from "src/app/login/services/login.service";
 export class SignupComponent implements OnInit {
   userType: string = "Dealer";
   loginResponce: any;
-  constructor(private _Router: Router, private _LoginService: LoginService) {}
+  errorMsg: string;
+  errorValid: boolean = false;
+  errorNotValid:boolean=false;
+  msgState:boolean=false;
+  constructor(private _Router: Router, private _LoginService: LoginService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   loginPage = () => this._Router.navigate([""]);
 
   ragisterForm(ragisterFormdata: any) {
-    console.log(ragisterFormdata.form.value);
-    debugger;
-    this._LoginService.ragisterUser(ragisterFormdata.value).subscribe(data=>{
-      data;
-    });
-    // this.loginResponce
-    //   ? alert("Login Successful")
-    //   : alert("Invalid username/password");
-    ragisterFormdata.reset({
-      userType: "Dealer",
+
+    this._LoginService.ragisterUser(ragisterFormdata.value).subscribe(data => {
+      if (data) {
+        this.errorValid=data;
+        this.msgState = true;
+        this.errorMsg = "Registration Successful! It will redirect to login page ";
+        setTimeout(() => {
+          this._Router.navigate(["loginPage"]);
+        }, 3000);
+      }
+      else {
+        this.errorValid=data;
+        this.msgState = true;
+        this.errorMsg = "Mobile Number is already  exist";
+      }
+      ragisterFormdata.reset({
+        userType: "Dealer",
+      });
     });
   }
 }

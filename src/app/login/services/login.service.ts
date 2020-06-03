@@ -4,11 +4,12 @@ import { HttpClient } from "@angular/common/http";
 @Injectable({
   providedIn: "root",
 })
+
 export class LoginService {
-  loginurl = "http://192.168.0.111:8080/login";
-  userRegistration = "http://192.168.0.111:8080/userRegistration";
-  profilefromdata = "http://192.168.0.111:8080/updateProfile";
-  bankdetalsdata = "http://192.168.0.111:8080/saveBankDetails";
+  loginurl = "http://192.168.0.101:8080/medistores/login";
+  userRegistration = "http://192.168.0.101:8080/medistores/userRegistration";
+  profilefromdata = "http://192.168.0.101:8080/medistores/updateProfile";
+  bankdetalsdata = "http://192.168.0.101:8080/medistores/saveBankDetails";
   islogin:boolean=true;
   constructor(public http: HttpClient) {}
   
@@ -20,14 +21,16 @@ export class LoginService {
     return this.http.post<any>(this.userRegistration, ragisterUserdetails);
   }
 
-  forgetPasswordfrom(forgetPassworddetails) {
+  forgetPasswordform(forgetPassworddetails) {
+
     return this.http.post<any>(this.loginurl, forgetPassworddetails);
   }
 
-  profilefrom(profiledetails) {
+  profileForm(profiledetails) {
+    debugger;
     return this.http.post<any>(this.profilefromdata, profiledetails);
   }
-  bankDetailsfrom(bankDetailsddetails) {
+  bankDetailsForm(bankDetailsddetails) {
     debugger;
     return this.http.post<any>(this.profilefromdata, bankDetailsddetails);
   }
