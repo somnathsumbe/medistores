@@ -10,6 +10,7 @@ export class LoginService {
   userRegistration = "http://192.168.0.101:8080/medistores/userRegistration";
   profilefromdata = "http://192.168.0.101:8080/medistores/updateProfile";
   bankdetalsdata = "http://192.168.0.101:8080/medistores/saveBankDetails";
+  bankList='http://192.168.0.101:8080/medistores/cityList';
   islogin:boolean=true;
   constructor(public http: HttpClient) {}
   
@@ -27,12 +28,18 @@ export class LoginService {
   }
 
   profileForm(profiledetails) {
-    debugger;
     return this.http.post<any>(this.profilefromdata, profiledetails);
   }
   bankDetailsForm(bankDetailsddetails) {
-    debugger;
     return this.http.post<any>(this.profilefromdata, bankDetailsddetails);
+  }
+  AllBankList() {
+    return this.http.get<any>(this.bankList);
+  }
+
+  saveBankDetails(bankDetailsData) {
+    debugger;
+    return this.http.post<any>(this.bankdetalsdata,bankDetailsData);
   }
 }
 // export class LoginService {

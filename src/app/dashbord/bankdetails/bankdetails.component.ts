@@ -30,59 +30,38 @@ export class BankdetailsComponent implements OnInit {
     "United Bank of India",
     "Vijaya Bank",
   ];
+  Cityes: any[] = [];
+  bankForm;
+  msgState:boolean;
+  errorMsg:string;
+  constructor(private _login: LoginService) { }
+  ngOnInit(): void {
+    this.getBankData();
+    this.getCityData();
+  }
 
-  Cityes: string[] = [
-    "Mumbai",
-    "Pune",
-    "Nagpur",
-    "Thane",
-    "Pimpri-Chinchwad",
-    "Nashik",
-    "Kalyan-Dombivli",
-    "Vasai-Virar City MC",
-    "Aurangabad",
-    "Navi Mumbai",
-    "Solapur",
-    "Mira-Bhayandar",
-    "Bhiwandi-Nizampur MC",
-    "Amravati",
-    "Nanded Waghala",
-    "Kolhapur",
-    "Ulhasnagar",
-    "Sangli-Miraj-Kupwad",
-    "Malegaon",
-    "Jalgaon",
-    "Akola",
-    "Latur",
-    "Dhule",
-    "Ahmednagar",
-    "Chandrapur",
-    "Parbhani",
-    "Ichalkaranji",
-    "Jalna",
-    "Ambarnath",
-    "Bhusawal",
-    "Panvel",
-    "Ratnagiri",
-    "Beed",
-    "Gondia",
-    "Satara",
-    "Barshi",
-    "Yavatmal",
-    "Achalpur",
-    "Osmanabad",
-    "Nandurbar",
-    "Wardha",
-    "Udgir",
-    "Hinganghat",
-  ];
-  constructor(private _login: LoginService) {}
-  bankDetailsUserData: any[] = [];
-  ngOnInit(): void {}
+
+  getBankData() {
+    //   this._login.bankDetailsList().subscribe(data =>{
+    //    this.Banks=data;
+    //    console.log(this.Banks);
+    //  })
+  }
+  getCityData() {
+    this._login.AllBankList().subscribe(city => {
+      this.Cityes = city;
+    })
+  }
 
   bankDetailsData(bankform: any) {
-    this._login
-      .bankDetailsForm(bankform.value)
-      .subscribe((res) => (this.bankDetailsUserData = res));
+    this.bankForm=bankform.value;
+    this.bankForm["city"] = {"cityId" : bankform.form.controls.cityId.value};
+    this._login.saveBankDetails(this.bankForm).subscribe((bankdata)=>{
+      bankdata;
+      if (bankdata) {
+        this.msgState=true;
+        this.errorMsg = "Banks Details  saved successfully"
+      }
+    })
   }
 }

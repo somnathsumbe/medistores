@@ -10,20 +10,18 @@ import { Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
   gender = "Male";
   profileForm: any;
-  msgState: boolean = true;
+  msgState: boolean = false;
   errorMsg: string;
   constructor(private _LoginService: LoginService, private _Router: Router) { }
 
   ngOnInit(): void { }
   profileData(profileform: any) {
-    debugger;
     this.profileForm = profileform.value;
     this.profileForm["loginDetails"]={ "userLoginId": profileform.form.controls.userLoginId.value };
-
-    console.log("****************"+this.profileForm);
     this._LoginService.profileForm(profileform.value).subscribe((data) => {
       data;
       if (data) {
+        this.msgState=true;
         this.errorMsg = "Profile data saved successfully"
       }
     });
