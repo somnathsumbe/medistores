@@ -6,11 +6,11 @@ import { HttpClient } from "@angular/common/http";
 })
 
 export class LoginService {
-  loginurl = "http://192.168.0.101:8080/medistores/login";
-  userRegistration = "http://192.168.0.101:8080/medistores/userRegistration";
-  profilefromdata = "http://192.168.0.101:8080/medistores/updateProfile";
-  bankdetalsdata = "http://192.168.0.101:8080/medistores/saveBankDetails";
-  bankList='http://192.168.0.101:8080/medistores/cityList';
+  loginurl = "http://192.168.0.100:8080/medistores/login";
+  userRegistration = "http://192.168.0.100:8080/medistores/userRegistration";
+  profilefromdata = "http://192.168.0.100:8080/medistores/updateProfile";
+  bankdetalsdata = "http://192.168.0.100:8080/medistores/saveBankDetails";
+  bankList='http://192.168.0.100:8080/medistores/cityList';
   islogin:boolean=true;
   constructor(public http: HttpClient) {}
   

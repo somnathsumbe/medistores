@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 
-import { LoginService } from "src/app/login/services/login.service";
+import { LoginService } from "src/app/administration/services/login.service";
 import { NgForm } from "@angular/forms";
 import { NgIf } from "@angular/common";
 import { Router } from "@angular/router";

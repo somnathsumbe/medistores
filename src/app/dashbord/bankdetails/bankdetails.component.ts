@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { LoginService } from "src/app/login/services/login.service";
+import { LoginService } from "src/app/administration/services/login.service";
 
 @Component({
   selector: "app-bankdetails",
@@ -55,7 +55,9 @@ export class BankdetailsComponent implements OnInit {
 
   bankDetailsData(bankform: any) {
     this.bankForm=bankform.value;
-    this.bankForm["city"] = {"cityId" : bankform.form.controls.cityId.value};
+    delete this.bankForm.cityId; 
+    console.log(delete this.bankForm.cityId);
+    this.bankForm["city"] = {"cityId" : parseInt(bankform.form.controls.cityId.value)};
     this._login.saveBankDetails(this.bankForm).subscribe((bankdata)=>{
       bankdata;
       if (bankdata) {
