@@ -10,10 +10,9 @@ import { FooterComponent } from './administration/footer/footer.component';
 import { ForgetpasswordComponent } from './administration/forgetpassword/forgetpassword.component';
 import { SignupComponent } from './administration/signup/signup.component';
 import { PagenotfoundComponent } from './administration/pagenotfound/pagenotfound.component';
-import { DashbordComponent } from './dashbord/dashbord.component';
 import { SidebarComponent } from './administration/sidebar/sidebar.component';
-import { ProfileComponent } from './dashbord/profile/profile.component';
-import { BankdetailsComponent } from './dashbord/bankdetails/bankdetails.component';
+import { AdministrationModule } from './administration/administration.module';
+
 
 
 
@@ -26,18 +25,15 @@ import { BankdetailsComponent } from './dashbord/bankdetails/bankdetails.compone
     ForgetpasswordComponent,
     SignupComponent,
     PagenotfoundComponent,
-    DashbordComponent,
     SidebarComponent,
-    ProfileComponent,
-    BankdetailsComponent,
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AdministrationModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

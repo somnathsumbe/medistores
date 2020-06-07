@@ -1,12 +1,12 @@
 <div class="container-scroller">
-  <app-header *ngIf="!islogin"></app-header>
+  <app-header></app-header>
   <div class="container-fluid page-body-wrapper">
-    <app-sidebar *ngIf="!islogin" class="postion"></app-sidebar>
+    <app-sidebar class="postion"></app-sidebar>
     <div class="main-panel">
       <div class="content-wrapper mt-5">
         <router-outlet></router-outlet>
       </div>
-      <app-footer *ngIf="!islogin"></app-footer>
+      <app-footer></app-footer>
     </div>
   </div>
 </div>
