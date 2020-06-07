@@ -13190,7 +13190,8 @@ dl {
               right: 0; }
           .sidebar .nav.sub-menu .nav-item .nav-link.active {
             color: #b66dff;
-            background: transparent; }
+            /* background: transparent;  */
+            background: #f2edf3; }
           .sidebar .nav.sub-menu .nav-item .nav-link:hover {
             color: #555555; }
         .sidebar .nav.sub-menu .nav-item:hover {

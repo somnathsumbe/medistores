@@ -21,11 +21,11 @@ import { AdministrationModule } from './administration/administration.module';
     AppComponent,
     LoginComponent,
     HeaderComponent,
-    FooterComponent,
     ForgetpasswordComponent,
     SignupComponent,
     PagenotfoundComponent,
     SidebarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
