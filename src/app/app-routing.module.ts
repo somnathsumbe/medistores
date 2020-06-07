@@ -6,8 +6,10 @@ import { ForgetpasswordComponent } from './administration/forgetpassword/forgetp
 import { SignupComponent } from './administration/signup/signup.component';
 import { ProfileComponent } from './administration/profile/profile.component';
 import { BankdetailsComponent } from './administration/bankdetails/bankdetails.component';
-import { HNSDetailsComponent } from './administration/hnsdetails/hnsdetails.component';
-import { HNSListComponent } from './administration/hnslist/hnslist.component';
+import { SalesComponent } from './masters/party/sales/sales.component';
+import { PurchaseComponent } from './masters/party/purchase/purchase.component';
+import { HNSListComponent } from './masters/hnslist/hnslist.component';
+import { HNSDetailsComponent } from './masters/hnsdetails/hnsdetails.component';
 
 
 const routes: Routes = [
@@ -17,9 +19,10 @@ const routes: Routes = [
   { path: "bankinfo", component: BankdetailsComponent},
   { path: 'forgetPassword', component: ForgetpasswordComponent},
   { path: 'ragisterUser', component: SignupComponent},
-
   { path: 'HSNlist', component: HNSListComponent},
   { path: 'HSNdetails', component: HNSDetailsComponent},
+  { path:"party/purchase", component:PurchaseComponent, pathMatch:'full'},
+  { path: "party/sales", component: SalesComponent },
   { path: '**', component: PagenotfoundComponent},
 ];
 

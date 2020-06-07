@@ -5,13 +5,14 @@ import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './administration/login/login.component';
-import { HeaderComponent } from './administration/header/header.component';
+import { HeaderComponent } from './masters/header/header.component';
 import { FooterComponent } from './administration/footer/footer.component';
 import { ForgetpasswordComponent } from './administration/forgetpassword/forgetpassword.component';
 import { SignupComponent } from './administration/signup/signup.component';
 import { PagenotfoundComponent } from './administration/pagenotfound/pagenotfound.component';
 import { SidebarComponent } from './administration/sidebar/sidebar.component';
 import { AdministrationModule } from './administration/administration.module';
+import { MastersModule } from './masters/masters.module';
 
 
 
@@ -33,7 +34,8 @@ import { AdministrationModule } from './administration/administration.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AdministrationModule
+    AdministrationModule,
+    MastersModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]
