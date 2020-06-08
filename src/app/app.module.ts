@@ -14,9 +14,6 @@ import { SidebarComponent } from './administration/sidebar/sidebar.component';
 import { AdministrationModule } from './administration/administration.module';
 import { MastersModule } from './masters/masters.module';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,

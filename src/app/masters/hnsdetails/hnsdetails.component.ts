@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HsnListService } from '../service/hsn-list.service';
 
 @Component({
   selector: 'app-hnsdetails',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hnsdetails.component.css']
 })
 export class HNSDetailsComponent implements OnInit {
-
-  constructor() { }
+  hsnLists = [];
+  constructor(private _HsnListService: HsnListService) { }
 
   ngOnInit(): void {
+    this.gethsnDetails();
+  }
+  gethsnDetails() {
+    this._HsnListService.gethsnListDetails().subscribe(HsnList => {
+      this.hsnLists = HsnList;
+      console.log( this.hsnLists);
+    })
   }
 
 }

@@ -13,9 +13,9 @@
         <div class="row">
           <div class="col-md-6">
             <div class="form-group row">
-              <label class="col-sm-5 col-form-label" for="bankName">City</label>
+              <label class="col-sm-5 col-form-label" for="bankName">Bank Name</label>
               <div class="col-sm-7">
-                <select class="form-control" id="bankName" name="bankName" (change)="getBankData()"  ngModel #bankName='ngModel' required>
+                <select class="form-control form-control-sm" id="bankName" name="bankName" (change)="getBankData()"  ngModel #bankName='ngModel' required>
                   <option>Select bank </option>
                   <option *ngFor="let bank of Banks"  [value]="bank">{{bank}}</option>
                 </select>
@@ -29,7 +29,7 @@
             <div class="form-group row">
               <label class="col-sm-5 col-form-label" for="address">Address</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="address" name="address" (change)="getBankData()" ngModel #address='ngModel'
+                <input type="text" class="form-control form-control-sm" id="address" name="address" (change)="getBankData()" ngModel #address='ngModel'
                   required>
                   
                 <span *ngIf="!address.valid && (address.touched || address.dirty)" class="text-danger small">
@@ -44,7 +44,7 @@
             <div class="form-group row">
               <label class="col-sm-5 col-form-label" for="branchCode">Branch Code</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="branchCode" name="branchCode" ngModel #branchCode='ngModel'
+                <input type="text" class="form-control form-control-sm" id="branchCode" name="branchCode" ngModel #branchCode='ngModel'
                   required />
                 <span *ngIf="!branchCode.valid && (branchCode.touched || branchCode.dirty)" class="text-danger small">
                   <small *ngIf='branchCode.errors["required"]'>Branch Code required</small>
@@ -58,7 +58,7 @@
             <div class="form-group row">
               <label class="col-sm-5 col-form-label" for="ifscCode">IFSC Code</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="ifscCode" name="ifscCode" ngModel #ifscCode='ngModel'
+                <input type="text" class="form-control form-control-sm" id="ifscCode" name="ifscCode" ngModel #ifscCode='ngModel'
                   required />
                 <span *ngIf="!ifscCode.valid && (ifscCode.touched || ifscCode.dirty)" class="text-danger small">
                   <small *ngIf='ifscCode.errors["required"]'>Bank IFSC Code required</small>
@@ -73,7 +73,7 @@
             <div class="form-group row">
               <label class="col-sm-5 col-form-label">Post Code </label>
               <div class="col-sm-7">
-                <input type="number" class="form-control" required />
+                <input type="number" class="form-control form-control-sm" required />
                 <span *ngIf="!ifscCode.valid && (ifscCode.touched || ifscCode.dirty)" class="text-danger small">
                   <small *ngIf='ifscCode.errors["required"]'>Bank IFSC Code required</small>
                 </span>
@@ -86,7 +86,7 @@
             <div class="form-group row">
               <label class="col-sm-5 col-form-label" for="city">City</label>
               <div class="col-sm-7">
-                <select class="form-control" id="cityId" name="cityId" (change)="getCityData()"  ngModel #cityId='ngModel' required>
+                <select class="form-control form-control-sm" id="cityId" name="cityId" (change)="getCityData()"  ngModel #cityId='ngModel' required>
                   <option>Select City </option>
                   <option *ngFor="let city of Cityes"  [value]="city.cityId">{{city.cityName}}</option>
                 </select>
@@ -102,7 +102,7 @@
             <div class="form-group row">
               <label class="col-sm-5 col-form-label">State</label>
               <div class="col-sm-7">
-                <select class="form-control">
+                <select class="form-control form-control-sm">
                     <option>America</option>
                     <option>Italy</option>
                     <option>Russia</option>
@@ -115,7 +115,7 @@
             <div class="form-group row">
               <label class="col-sm-5 col-form-label">Country</label>
               <div class="col-sm-7">
-                <select class="form-control">
+                <select class="form-control form-control-sm">
                   <option>America</option>
                   <option>Italy</option>
                   <option>Russia</option>

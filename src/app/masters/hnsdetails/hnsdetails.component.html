@@ -1,1 +1,77 @@
-<p>hnsdetails works!</p>
+<div class="col-12">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">HSN Details</h4>
+      <form class="form-sample">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label">HSN Category</label>
+              <div class="col-sm-7">
+                <select class="form-control form-control-sm">
+                  <option>Category1</option>
+                  <option>Category2</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label">Description</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control form-control-sm">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>
+                            HSN Category
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                        <th>
+                            Created Date
+                        </th>
+                        <th>
+                          Edit
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let hsnList of hsnLists"> 
+                        <td class="py-1">
+                            {{hsnList.hsnCategory}}
+                        </td>
+                        <td>
+                            {{hsnList.description}}
+                        </td>
+                        <td>
+                            {{hsnList.createdDate |date}}
+                        </td>
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                <button type="button" class="btn btn-gradient-success btn-fw ">Add</button>
+                <button type="button" class="btn btn-gradient-danger btn-fw ml-2">Update</button>
+                <button type="button" class="btn btn-gradient-info btn-fw ml-2">Reset</button>
+            </div>
+            </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -15,7 +15,7 @@
               <label class="col-sm-5 col-form-label" for="firstName">First Name</label>
               <div class="col-sm-7">
 
-                <input type="text" class="form-control" id="firstName" name="firstName" ngModel #firstName='ngModel'
+                <input type="text" class="form-control form-control-sm" id="firstName" name="firstName" ngModel #firstName='ngModel'
                   placeholder="First Name" required>
                 <span *ngIf="!firstName.valid && (firstName.touched || firstName.dirty)" class="text-danger small">
                   <small *ngIf='firstName.errors["required"]'>firstName required</small>
@@ -28,7 +28,7 @@
               <label class="col-sm-5 col-form-label" for="middleName">Middle Name</label>
               <div class="col-sm-7">
 
-                <input type="text" class="form-control" id="middleName" name="middleName" ngModel #middleName='ngModel'
+                <input type="text" class="form-control form-control-sm" id="middleName" name="middleName" ngModel #middleName='ngModel'
                   placeholder="Middle Name " required>
                 <span *ngIf="!middleName.valid && (middleName.touched || middleName.dirty)" class="text-danger small">
                   <small *ngIf='middleName.errors["required"]'>middleName required</small>
@@ -43,7 +43,7 @@
               <label class="col-sm-5 col-form-label" for="lastName">Last Name</label>
               <div class="col-sm-7">
 
-                <input type="text" class="form-control" id="lastName" name="lastName" ngModel #lastName='ngModel'
+                <input type="text" class="form-control form-control-sm" id="lastName" name="lastName" ngModel #lastName='ngModel'
                   placeholder="Last Name" required>
 
                 <span *ngIf="!lastName.valid && (lastName.touched || lastName.dirty)" class="text-danger small">
@@ -56,7 +56,7 @@
             <div class="form-group row">
               <label class="col-sm-5 col-form-label">Mobile Number</label>
               <div class="col-sm-7">
-                <input type="tel" class="form-control" id="userLoginId" name="userLoginId" ngModel
+                <input type="tel" class="form-control form-control-sm" id="userLoginId" name="userLoginId" ngModel
                   #userLoginId='ngModel' placeholder="Email" required>
 
                 <span *ngIf="!lastName.valid && (userLoginId.touched || userLoginId.dirty)" class="text-danger small">
@@ -96,7 +96,7 @@
             <div class="form-group row">
               <label class="col-sm-5 col-form-label">Date of Birth</label>
               <div class="col-sm-7">
-                <input type="date" class="form-control" id="dob" name="dob" ngModel #dob='ngModel'
+                <input type="date" class="form-control form-control-sm" id="dob" name="dob" ngModel #dob='ngModel'
                   placeholder="Date of Birth" required>
 
                 <span *ngIf="!dob.valid && (dob.touched || dob.dirty)" class="text-danger small">
@@ -114,7 +114,7 @@
                 <label class="col-sm-5 col-form-label" for="emailId">Email Id </label>
                 <div class="col-sm-7">
   
-                  <input type="email" class="form-control" id="emailId" name="emailId" ngModel #emailId='ngModel'
+                  <input type="email" class="form-control form-control-sm" id="emailId" name="emailId" ngModel #emailId='ngModel'
                     placeholder="Last Name" required>
   
                   <span *ngIf="!emailId.valid && (emailId.touched || emailId.dirty)" class="text-danger small">
