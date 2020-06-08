@@ -24,6 +24,7 @@ import { MastersModule } from './masters/masters.module';
     PagenotfoundComponent,
     SidebarComponent,
     FooterComponent
+    
   ],
   imports: [
     BrowserModule,

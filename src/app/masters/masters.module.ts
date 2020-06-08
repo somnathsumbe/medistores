@@ -5,11 +5,10 @@ import { SalesComponent } from './party/sales/sales.component';
 import { HNSListComponent } from './hnslist/hnslist.component';
 import { HNSDetailsComponent } from './hnsdetails/hnsdetails.component';
 import { PartyComponent } from './party/party.component';
-
-
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
-  declarations: [PurchaseComponent, SalesComponent,HNSListComponent, HNSDetailsComponent, PartyComponent],
+  declarations: [PurchaseComponent, SalesComponent,HNSListComponent, HNSDetailsComponent, PartyComponent, ProductComponent],
   imports: [
     CommonModule
   ]
