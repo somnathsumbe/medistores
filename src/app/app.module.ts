@@ -25,7 +25,7 @@ import { MastersModule } from './masters/masters.module';
     SignupComponent,
     PagenotfoundComponent,
     SidebarComponent,
-    FooterComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

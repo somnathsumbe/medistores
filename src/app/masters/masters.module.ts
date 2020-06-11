@@ -9,16 +9,10 @@ import { ProductsComponent } from './products/products.component';
 import { TransportComponent } from './transport/transport.component';
 import { SearchFilterPipe } from './pipe/search-filter.pipe';
 
+
 @NgModule({
-  declarations: [
-    PurchaseComponent, 
-    SalesComponent, 
-    HNSDetailsComponent, 
-    PartyComponent,
-    ProductsComponent, 
-    TransportComponent, 
-    SearchFilterPipe
-  ],
+  declarations: [PurchaseComponent, SalesComponent, HNSDetailsComponent, PartyComponent, ProductComponent,TransportComponent, SearchFilterPipe],
+
   imports: [
     CommonModule,
     ReactiveFormsModule,
