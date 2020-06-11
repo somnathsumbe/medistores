@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HNSDetailsComponent } from './hnsdetails.component';
+import { TransportComponent } from './transport.component';
 
-describe('HNSDetailsComponent', () => {
-  let component: HNSDetailsComponent;
-  let fixture: ComponentFixture<HNSDetailsComponent>;
+describe('TransportComponent', () => {
+  let component: TransportComponent;
+  let fixture: ComponentFixture<TransportComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HNSDetailsComponent ]
+      declarations: [ TransportComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HNSDetailsComponent);
+    fixture = TestBed.createComponent(TransportComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -8,3 +8,6 @@ input.ng-invalid.ng-touched{
     text-decoration: none;
     background-color: #f8f9fa;
 }
+.arrowpointer{
+cursor: pointer;
+}

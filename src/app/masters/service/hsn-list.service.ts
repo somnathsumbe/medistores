@@ -10,17 +10,17 @@ import {
   providedIn: 'root' 
 })
 export class HsnListService {
-  hsnList = "http://192.168.0.100:8080/medistores/hsnList";
-  savhsn = "http://192.168.0.100:8080/medistores/saveHsn";
+  HSNUrl = "http://192.168.0.100:8080/medistores/hsnList";
+  saveHSNUrl = "http://192.168.0.100:8080/medistores/saveHsn";  
 
   constructor(public http: HttpClient) {}
   gethsnListDetails() {
-    return this.http.get < any > (this.hsnList);
+    return this.http.get < any > (this.HSNUrl);
   }
 
   PosthsnListDetails(hsnformdata) {
-    debugger;
-    return this.http.post <any> (this.savhsn,hsnformdata);
+
+    return this.http.post <any> (this.saveHSNUrl,hsnformdata);
   }
 
 }

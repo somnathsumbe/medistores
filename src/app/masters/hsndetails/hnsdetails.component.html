@@ -1,12 +1,14 @@
 <div class="col-12">
   <div class="card">
     <div class="card-body">
-      <div class="alert  alert-dismissible fade show" *ngIf="message" [ngClass]="messageState ? 'alert-success' : 'alert-danger'">
+      <div class="alert  alert-dismissible fade show" *ngIf="message"
+        [ngClass]="messageState ? 'alert-success' : 'alert-danger'">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Message</strong> {{message |titlecase}}
       </div>
       <h4 class="card-title">HSN Details</h4>
       <form class="form-sample" [formGroup]="hsnForm" (ngSubmit)="hsnDetailsData(hsnForm)">
+
         <div class="row">
           <div class="col-md-5">
             <div class="form-group row">
@@ -14,7 +16,11 @@
               <div class="col-sm-7">
                 <input type="text" class="form-control form-control-sm" name="hsnCategory" formControlName="hsnCategory"
                   placeholder="hsnCategory Name ">
-                  <small class="text-danger" *ngIf="!hsnForm.get('hsnCategory').valid && hsnForm.get('hsnCategory').touched">Please enter valid hsnCategory</small>
+
+                  <input type="hidden"  name="hsnId" *ngIf="hsnid">
+                <small class="text-danger"
+                  *ngIf="!hsnForm.get('hsnCategory').valid && hsnForm.get('hsnCategory').touched">Please enter valid
+                  hsnCategory</small>
               </div>
             </div>
 
@@ -25,30 +31,48 @@
               <div class="col-sm-7">
                 <input type="text" class="form-control form-control-sm" name="description" formControlName="description"
                   placeholder="Description" required>
-                  <small class="text-danger" *ngIf="!hsnForm.get('description').valid && hsnForm.get('description').touched">Please enter valid description</small>
+                <small class="text-danger"
+                  *ngIf="!hsnForm.get('description').valid && hsnForm.get('description').touched">Please enter valid
+                  description</small>
               </div>
             </div>
-
           </div>
 
           <div class="col-md-2">
             <div class="form-group row">
               <div class="col-md-12">
-
-                <button type="submit" class="btn btn-gradient-primary  mb-2 float-right" [disabled]="!hsnForm.valid"><i class="mdi mdi-plus"></i>
-                  Add
+                <button type="submit" class="btn btn-md btn-gradient-success  mb-2 float-right"
+                  [disabled]="!hsnForm.valid">{{hsnid? 'Update' : 'Add'}}
                 </button>
-
               </div>
             </div>
           </div>
 
         </div>
 
+      </form>
+
+
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <div class="input-group">
+              <input type="text" class="form-control form-control-sm" [(ngModel)]="search" placeholder="Filter" aria-label="Recipient's username"
+                aria-describedby="basic-addon2">
+              <div class="input-group-append">
+    
+                <button class="btn btn-sm btn-gradient-dark" type="button"  >      <i class="mdi mdi-account-search"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
         <div class="row">
           <div class="col-md-12">
-            <table class="table table-striped table-bordered table-sm">
-              <thead>
+            <table class="table  table-bordered table-responsive-md ">
+              <thead class="bg-inverse-dark text-white">
                 <tr tabindex="0">
                   <th>
                     HSN Category
@@ -65,22 +89,23 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let hsnList of hsnLists; index as i">
-                  <td class="py-1" tabindex="0">
+                <tr *ngFor="let hsnList of hsnLists |SearchFilter :search: 'hsnCategory'">
+                  <td class="py-1">
                     {{hsnList.hsnCategory}}
                   </td>
-                  <td tabindex="0">
+                  <td>
                     {{hsnList.description |titlecase}}
                   </td>
-                  <td tabindex="0">
+                  <td>
                     {{hsnList.createdDate |date}}
                   </td>
-                  <td tabindex="0">
-                    <button type="button" class="btn btn-gradient-primary btn-sm" tabindex="0" ><i
-                        class="mdi mdi-file-check btn-icon-append"></i>Edit</button>
+                  <td>
+
+                    <label class="badge badge-dark bg-inverse-dark arrowpointer"
+                      (click)="editHsnDetails(hsnList)">Edit</label>
+                   
                   </td>
                 </tr>
-
               </tbody>
             </table>
 
@@ -88,7 +113,8 @@
           </div>
         </div>
 
-      </form>
+
     </div>
   </div>
 </div>
+
