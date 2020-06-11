@@ -14,6 +14,8 @@ import { SidebarComponent } from './administration/sidebar/sidebar.component';
 import { AdministrationModule } from './administration/administration.module';
 import { MastersModule } from './masters/masters.module';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +26,6 @@ import { MastersModule } from './masters/masters.module';
     PagenotfoundComponent,
     SidebarComponent,
     FooterComponent
-    
   ],
   imports: [
     BrowserModule,
@@ -33,7 +34,8 @@ import { MastersModule } from './masters/masters.module';
     ReactiveFormsModule,
     HttpClientModule,
     AdministrationModule,
-    MastersModule
+    MastersModule,
+    
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

@@ -13,75 +13,46 @@
         <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
       </a>
     </li>
-    <!-- <li class="nav-item">
-      <a class="nav-link" href="index.html">
-        <span class="menu-title">Dashboard</span>
-        <i class="mdi mdi-home menu-icon"></i>
-      </a>
-    </li> -->
+
     <li class="nav-item">
-      <a  class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-        <span class="menu-title" >Master</span>
-        <i class="menu-arrow"></i>
-        <i class="mdi mdi-crosshairs-gps menu-icon"></i>
+      <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <span class="menu-title" tabindex="0">Master</span>
+        <i class="menu-arrow"  tabindex="0"></i>
+        <i class="mdi mdi-crosshairs-gps menu-icon"  tabindex="0"></i>
       </a>
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" [routerLink]="['bankinfo']" routerLinkActive="active">Bank Details</a></li>
-          <li class="nav-item"> <a class="nav-link" [routerLink]="['party/purchase']" routerLinkActive="active">Purchase</a></li>
-          <li class="nav-item"> <a class="nav-link" [routerLink]="['party/sales']" routerLinkActive="active">Sales</a></li>
-          <li class="nav-item"> <a class="nav-link" [routerLink]="['HSNdetails']" routerLinkActive="active">HSN</a></li>
+          <!-- <li class="nav-item"> <a class="nav-link" [routerLink]="['bankinfo']" routerLinkActive="active">Bank Details</a></li> -->
+          <li tabindex="0" class="nav-item"> <a class="nav-link" [routerLink]="['party']"
+              routerLinkActive="active">Party</a></li>
+          <li tabindex="0" class="nav-item"> <a class="nav-link" [routerLink]="['purchase']"
+              routerLinkActive="active">Purchase</a></li>
+          <li tabindex="0" class="nav-item"> <a class="nav-link" [routerLink]="['sales']"
+              routerLinkActive="active">Sales</a></li>
+          <li tabindex="0" class="nav-item"> <a class="nav-link" [routerLink]="['products']"
+              routerLinkActive="active">Products</a></li>
+          <li tabindex="0" class="nav-item"> <a class="nav-link" [routerLink]="['transport']"
+              routerLinkActive="active">Transport</a></li>
+          <li tabindex="0" class="nav-item"> <a class="nav-link" [routerLink]="['HSN']"
+              routerLinkActive="active">HSN</a></li>
         </ul>
       </div>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="collapse" href="#general-pages1" aria-expanded="false"
-        aria-controls="general-pages">
-        <span class="menu-title" >Medicines Stock</span>
-        <i class="menu-arrow"></i>
-        <i class="mdi mdi-medical-bag menu-icon"></i>
-      </a>
-      <div class="collapse" id="general-pages1">
-        <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href=""> 404 </a></li>
-          <!-- <li class="nav-item"> <a class="nav-link" [routerLink]="['bankinfo']" routerLinkActive="active">Bank Details</a></li>
-          <li class="nav-item"> <a class="nav-link" [routerLink]="['HSNlist']" routerLinkActive="active">HSN List</a></li>
-          <li class="nav-item"> <a class="nav-link" [routerLink]="['HSNdetails']" routerLinkActive="active">HSN Details</a></li> -->
-        </ul>
-      </div>
-    </li>
-    <li class="nav-item">
+
+    <li  class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#general-pages2" aria-expanded="false"
         aria-controls="general-pages">
-        <span class="menu-title" >Accounting</span>
+        <span class="menu-title"  tabindex="0">Accounting</span>
         <i class="menu-arrow"></i>
         <i class="mdi mdi-table-large menu-icon"></i>
       </a>
       <div class="collapse" id="general-pages2">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="#"> 404 </a></li>
-          <!-- <li class="nav-item"> <a class="nav-link" [routerLink]="['bankinfo']" routerLinkActive="active">Bank Details</a></li>
-          <li class="nav-item"> <a class="nav-link" [routerLink]="['HSNlist']" routerLinkActive="active">HSN List</a></li>
-          <li class="nav-item"> <a class="nav-link" [routerLink]="['HSNdetails']" routerLinkActive="active">HSN Details</a></li> -->
+          <li tabindex="0" class="nav-item"> <a class="nav-link" href="#"> 404 </a></li>
         </ul>
       </div>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="collapse" href="#general-pages3" aria-expanded="false"
-        aria-controls="general-pages">
-        <span class="menu-title">Customer</span>
-        <i class="menu-arrow"></i>
-        <i class="mdi mdi-chart-bar menu-icon"></i>
-      </a>
-      <div class="collapse" id="general-pages3">
-        <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href=""> 404 </a></li>
-          <!-- <li class="nav-item"> <a class="nav-link" [routerLink]="['bankinfo']" routerLinkActive="active">Bank Details</a></li>
-          <li class="nav-item"> <a class="nav-link" [routerLink]="['HSNlist']" routerLinkActive="active">HSN List</a></li>
-          <li class="nav-item"> <a class="nav-link" [routerLink]="['HSNdetails']" routerLinkActive="active">HSN Details</a></li> -->
-        </ul>
-      </div>
-    </li>
+
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#general-pages4" aria-expanded="false"
         aria-controls="general-pages">
