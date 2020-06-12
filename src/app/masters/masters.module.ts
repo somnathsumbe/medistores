@@ -8,15 +8,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductsComponent } from './products/products.component';
 import { TransportComponent } from './transport/transport.component';
 import { SearchFilterPipe } from './pipe/search-filter.pipe';
+import {NgxPaginationModule} from 'ngx-pagination';
+
 
 
 @NgModule({
-  declarations: [PurchaseComponent, SalesComponent, HNSDetailsComponent, PartyComponent, ProductComponent,TransportComponent, SearchFilterPipe],
+  declarations: [PurchaseComponent, SalesComponent, 
+    HNSDetailsComponent, PartyComponent, ProductsComponent,TransportComponent, SearchFilterPipe],
 
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    FormsModule 
+    FormsModule ,
+    NgxPaginationModule
   ]
 })
 
