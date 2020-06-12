@@ -3,8 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  hostUrl: 'http://192.168.0.100:8080/medistores',
   production:false,
-   firebaseConfig : {
+  firebaseConfig : {
     apiKey: "AIzaSyD7CY29tIguM6PTVPLjg7oDvtbIGphPkn8",
     authDomain: "api-project-586589451606.firebaseapp.com",
     databaseURL: "https://api-project-586589451606.firebaseio.com",
