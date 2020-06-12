@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { HsnListService } from '../service/hsn-list.service';
 import { FormGroup, FormControl, FormBuilder, NgForm, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-hnsdetails',
   templateUrl: './hnsdetails.component.html',
   styleUrls: ['./hnsdetails.component.css'],
-  preserveWhitespaces:true
+  preserveWhitespaces: true
 })
 export class HNSDetailsComponent implements OnInit {
   hsnLists = [];
-  message: string;
-  messageState: boolean;
   hsnForm: FormGroup;
   hsnid: number;
-  childValue:string;
-  search:string='';
+  search: string = '';
+  totalRecords: string;
+  page: number
 
-
-  constructor(private _HsnListService: HsnListService, private formBuilder: FormBuilder) {
+  constructor(private _HsnListService: HsnListService, private formBuilder: FormBuilder, private toastr: ToastrService) {
 
   }
 
@@ -26,16 +26,16 @@ export class HNSDetailsComponent implements OnInit {
     this.gethsnDetails();
     this.hsnForm = new FormGroup({
       hsnCategory: new FormControl(null, Validators.required),
-      description: new FormControl(null, Validators.required),
+      description: new FormControl(null),
       hsnId: new FormControl(null)
     });
-
   }
 
-
   gethsnDetails() {
+    debugger;
     this._HsnListService.gethsnListDetails().subscribe(HsnList => {
       this.hsnLists = HsnList;
+      this.totalRecords = HsnList.length;
     })
   }
 
@@ -44,16 +44,16 @@ export class HNSDetailsComponent implements OnInit {
     this._HsnListService.PosthsnListDetails(hsnForm.value).subscribe((res) => {
       if (res) {
         this.gethsnDetails();
-        this.messageState = true;
-        this.message = "HSN Details Data Save Successfully";
         this.hsnForm.reset(this.hsnForm.value);
+        this.toastr.success('HSN Details Data Save Successfully');
+        hsnForm.reset();
 
       } else {
-        this.messageState = false;
-        this.message = "error occurred ";
+        this.toastr.error('error occurred');
       }
     })
   }
+
   editHsnDetails(hsnList) {
     this.hsnid = hsnList.hsnId;
     this.hsnForm.controls['hsnId'].setValue(hsnList.hsnId);
@@ -61,14 +61,4 @@ export class HNSDetailsComponent implements OnInit {
     this.hsnForm.controls['description'].setValue(hsnList.description);
   }
 
-  // childFilter(value) {
-  //  this.childValue=value;
-  // }
-
-  // childAsending() {
-  //   alert("childAsending");
-  // }
-  // childDsending() {
-  //   alert("childDsending");
-  // }
 }
