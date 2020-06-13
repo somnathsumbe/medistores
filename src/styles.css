@@ -11,3 +11,21 @@ input.ng-invalid.ng-touched{
 .arrowpointer{
 cursor: pointer;
 }
+
+.form-group {
+    margin-bottom:0.5rem;
+}
+.card .card-body {
+    padding: 1.0rem 1.5rem;
+}
+
+.form-control-sm {
+    height: 2.0rem;
+}
+.col-form-label {
+    padding-top: calc(0.44rem + 1px);
+    padding-bottom: calc(0.60rem + 1px);
+    margin-bottom: 0;
+    font-size: inherit;
+    line-height: 1;
+}
