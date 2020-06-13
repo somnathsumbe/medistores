@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { HsnListService } from '../service/hsn-list.service';
-import { FormGroup, FormControl, FormBuilder, NgForm, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-
-
+import { MastersService } from 'src/app/shared/service/masters.service';
 @Component({
   selector: 'app-hnsdetails',
   templateUrl: './hnsdetails.component.html',
   styleUrls: ['./hnsdetails.component.css'],
   preserveWhitespaces: true
 })
+
 export class HNSDetailsComponent implements OnInit {
   hsnLists = [];
   hsnForm: FormGroup;
@@ -18,8 +17,10 @@ export class HNSDetailsComponent implements OnInit {
   totalRecords: string;
   page: number
 
-  constructor(private _HsnListService: HsnListService, private formBuilder: FormBuilder, private toastr: ToastrService) {
-
+  constructor( 
+    private formBuilder: FormBuilder, 
+    private toastr: ToastrService,
+    private masterService: MastersService) {
   }
 
   ngOnInit(): void {
@@ -32,22 +33,19 @@ export class HNSDetailsComponent implements OnInit {
   }
 
   gethsnDetails() {
-    debugger;
-    this._HsnListService.gethsnListDetails().subscribe(HsnList => {
+    this.masterService.fetchDetails('hsnList').subscribe(HsnList => {
       this.hsnLists = HsnList;
       this.totalRecords = HsnList.length;
     })
   }
 
-  hsnDetailsData(hsnForm: any) {
-    console.log(hsnForm.controls);
-    this._HsnListService.PosthsnListDetails(hsnForm.value).subscribe((res) => {
+  addEditHSNDetails(hsnForm: any) {
+    this.masterService.addEditDetails('saveHsn', hsnForm.value).subscribe((res) => {
       if (res) {
         this.gethsnDetails();
         this.hsnForm.reset(this.hsnForm.value);
         this.toastr.success('HSN Details Data Save Successfully');
         hsnForm.reset();
-
       } else {
         this.toastr.error('error occurred');
       }
