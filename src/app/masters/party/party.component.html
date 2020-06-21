@@ -1,1 +1,407 @@
-<p>party works!</p>
+<div class="col-12"  *ngIf="!IsPartyView;else partyView">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Party Details</h4>
+      <form class="form-sample" [formGroup]="partyForm" (ngSubmit)="addEditPartyDetails(partyForm)">
+
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="firmName">Firm Name</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control form-control-sm" name="firmName" formControlName="firmName"
+                  placeholder="Firm Name">
+
+                <input type="hidden" name="customerId" *ngIf="customerId">
+                <small class="text-danger"
+                  *ngIf="!partyForm.get('firmName').valid && partyForm.get('firmName').touched">Please enter valid
+                  Firm Name</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="firstName">First Name</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control form-control-sm" name="firstName" formControlName="firstName"
+                  placeholder="First Name">
+                  <small class="text-danger"
+                  *ngIf="!partyForm.get('firstName').valid && partyForm.get('firstName').touched">Please enter valid
+                  First Name</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="emailId">Email Id</label>
+              <div class="col-sm-7">
+                <input type="email" class="form-control form-control-sm" name="emailId" formControlName="emailId"
+                  placeholder="Email Id">
+                  <small class="text-danger"
+                  *ngIf="!partyForm.get('emailId').valid && partyForm.get('emailId').touched">Please enter valid
+                  Email Id</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="faxNumber">Fax Number</label>
+              <div class="col-sm-7">
+                <input type="tel" class="form-control form-control-sm" name="faxNumber" formControlName="faxNumber"
+                  placeholder="Fax Number">
+                  <small class="text-danger"
+                  *ngIf="!partyForm.get('faxNumber').valid && partyForm.get('faxNumber').touched">Please enter valid
+                  Fax Number</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="middleName">Middle Name</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control form-control-sm" name="middleName" formControlName="middleName"
+                  placeholder="Middle Name">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="lastName">Last Name</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control form-control-sm" name="lastName" formControlName="lastName"
+                  placeholder="Last Name">
+                  <small class="text-danger"
+                  *ngIf="!partyForm.get('lastName').valid && partyForm.get('lastName').touched">Please enter valid
+                  Last Name</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="mobileNumber">Phone Number</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control form-control-sm" name="mobileNumber" formControlName="mobileNumber"
+                  placeholder="Phone Number" maxlength="10">
+                  <small class="text-danger"
+                  *ngIf="!partyForm.get('mobileNumber').valid && partyForm.get('mobileNumber').touched">Please enter valid
+                  Phone Number</small>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="drugLicienceNumber">Drug Licience Number</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control form-control-sm" name="drugLicienceNumber" formControlName="drugLicienceNumber"
+                  placeholder="Drug Licience Number">
+                  <small class="text-danger"
+                  *ngIf="!partyForm.get('drugLicienceNumber').valid && partyForm.get('drugLicienceNumber').touched">Please enter valid
+                  Drug Licience Number</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="drugLicienceExpDate">Drug Licience Expiry Date</label>
+              <div class="col-sm-7">
+                <input type="date" class="form-control form-control-sm" name="drugLicienceExpDate" formControlName="drugLicienceExpDate"
+                  placeholder="Drug Licience Expiry Date">
+                  <small class="text-danger"
+                  *ngIf="!partyForm.get('drugLicienceExpDate').valid && partyForm.get('drugLicienceExpDate').touched">Please enter valid
+                  Drug Licience Expiry Date</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="gstnNumber">GSTN Number</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control form-control-sm" name="gstnNumber" formControlName="gstnNumber"
+                  placeholder="GSTN Number">
+                  <small class="text-danger"
+                  *ngIf="!partyForm.get('gstnNumber').valid && partyForm.get('gstnNumber').touched">Please enter valid
+                  GSTN Number</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="foodLicienceNo">Food Licience No</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control form-control-sm" name="foodLicienceNo" formControlName="foodLicienceNo"
+                  placeholder="Food Licience No">
+                  <small class="text-danger"
+                  *ngIf="!partyForm.get('foodLicienceNo').valid && partyForm.get('foodLicienceNo').touched">Please enter valid
+                  Food Licience No</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="panNumber">Pan Number</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control form-control-sm" name="panNumber" formControlName="panNumber"
+                  placeholder="Pan Number">
+                  <small class="text-danger"
+                  *ngIf="!partyForm.get('panNumber').valid && partyForm.get('panNumber').touched">Please enter valid
+                  Pan Number</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="address">Address</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control form-control-sm" name="address" formControlName="address"
+                  placeholder="Address">
+                  <small class="text-danger"
+                  *ngIf="!partyForm.get('address').valid && partyForm.get('address').touched">Please enter valid
+                  Address</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="scheme">Scheme</label>
+              <div class="col-sm-7">
+                <select class="form-control form-control-sm" name="scheme" formControlName="scheme">
+                  <option [ngValue]="">Select Scheme</option>
+                  <option [ngValue]="1">1</option>
+                  <option [ngValue]="1">2</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="discount">Discount</label>
+              <div class="col-sm-7">
+                <select class="form-control form-control-sm" name="discount" formControlName="discount"
+                  placeholder="">
+                  <option [ngValue]="">Select Discount</option>
+                  <option [ngValue]="1">1%</option>
+                  <option [ngValue]="2">2%</option>
+                  <option [ngValue]="3">3%</option>
+                  <option [ngValue]="4">4%</option>
+                  <option [ngValue]="5">5%</option>
+                </select>
+              </div>
+            </div>
+          </div>
+         
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="isActive">Active Party</label>
+              <div class="col-sm-7">
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <div class="form-check form-check-success ">
+                      <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="isActive"
+                          formControlName="isActive" [value]=1>Yes<i class="input-helper"></i></label>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-check form-check-success">
+                      <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="isActive"
+                          formControlName="isActive" [value]=0>No<i class="input-helper"></i></label>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="customerType">Customer Type</label>
+              <div class="col-sm-7">
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <div class="form-check form-check-success ">
+                      <label class="form-check-label">
+                        <input type="radio" class="form-check-input" 
+                          formControlName="customerType" value="Dealer">Dealer<i class="input-helper"></i></label>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-check form-check-success">
+                      <label class="form-check-label">
+                        <input type="radio" class="form-check-input" 
+                          formControlName="customerType" value="Retailer">Retailer<i class="input-helper"></i></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="city">City</label>
+              <div class="col-sm-7">
+                <select class="form-control form-control-sm" name="city" formControlName="city">
+                  <option value=" "> Select City</option>
+                  <option *ngFor="let city of cities" [ngValue]="city.name">
+                  {{ city.name}}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="bankId">Bank Name</label>
+              <div class="col-sm-7">
+                <select class="form-control form-control-sm" name="bankId" formControlName="bankId">
+                  <option value=" "> Select Bank</option>
+                  <option value="120"> HDFC Bank</option>
+                  <option *ngFor="let bank of bankList" [ngValue]="bank.bankId">
+                    {{ bank.bankName}}
+                    </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <span class="input-group-btn">
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <div class="float-right">
+                    <button type="submit" class="btn btn-outline-dark btn-icon-text" [disabled]="!partyForm.valid">Add</button>
+                    <button type="button" class="btn btn-outline-success btn-fw" (click)="showPartyView()">View</button>
+                    <button type="button" class="btn btn-outline-warning btn-icon-text">Reset</button>
+                  </div>
+                </div>
+              </div>
+            </span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<ng-template #partyView>
+  <div class="col-md-12 mt-3">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header bg-behance text-white">
+            <div class="row">
+              <div class="col-md-6">
+                <h4 class="mt-2">Customers List</h4>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group ">
+                  <div class="input-group">
+                    <input type="text" class="form-control form-control-sm " [(ngModel)]="search"
+                      placeholder="Search By Customer Name " aria-label="Customer name"
+                      aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-sm btn-gradient-dark" type="button"> <i
+                          class="mdi mdi-account-search"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body border">
+            <div class="w3-padding w3-white notranslate">
+              <div class="card bg-yellow-gradient text-dark" [ngClass]="{'bg-light ': odd}"
+                *ngFor="let party of partyLists |SearchFilter :search: 'firmName' |paginate: { id: 'Medicine',itemsPerPage:2,currentPage: page,totalItems: totalRecords} ;let odd=odd;">
+                <div class="card-body shadow my-3">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <h4>Firm Name : {{party.firmName | uppercase}}<button type="button"
+                          class="btn btn-outline-dark btn-icon-text float-right" (click)="editPageShow(party)">Edit</button>
+                      </h4>
+                      <div class="clearfix"></div>
+                      <hr>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Name <code class="text-dark">: {{party.firstName}} {{party.middleName}} {{party.lastName}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                      Email Id <code class="text-dark">: {{party.emailId}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                      Fax Number <code class="text-dark">: {{party.faxNumber}}</code>
+                      </div>
+                    </div>  
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Address <code class="text-dark">: {{party.address}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Available Scheme <code class="text-dark">: {{party.scheme}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        discount <code class="text-dark">: {{party.discount}} %</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Drug Licience Number <code class="text-dark">: {{party.drugLicienceNumber}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Drug Licience Expiry Date <code class="text-dark">: {{party.drugLicienceExpDate | date}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        GSTN Number <code class="text-dark">:
+                          {{party.gstnNumber}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Food Licience No <code class="text-dark">: {{party.foodLicienceNo}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Pan Card Number<code class="text-dark">: {{party.panNumber}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Active Customer<code class="text-dark">: {{party.isActive? 'Yes' : 'No'}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Customer Type <code class="text-dark">: {{party.customerType}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        City Name <code class="text-dark">: {{party.city}}</code>
+                      </div>
+                    </div>
+                   </div>
+                </div>
+              </div>
+            </div>
+            <pagination-controls class="float-right mt-3" id="Medicine" maxSize="2" directionLinks="true"
+              (pageChange)="page= $event"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
