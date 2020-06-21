@@ -9,12 +9,14 @@ import { ProductsComponent } from './products/products.component';
 import { TransportComponent } from './transport/transport.component';
 import { SearchFilterPipe } from './pipe/search-filter.pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ReadmorePipe } from './pipe/readmore.pipe';
 
 
 
 @NgModule({
   declarations: [PurchaseComponent, SalesComponent, 
-    HNSDetailsComponent, PartyComponent, ProductsComponent,TransportComponent, SearchFilterPipe],
+    HNSDetailsComponent, PartyComponent, ProductsComponent,TransportComponent, SearchFilterPipe,
+    ReadmorePipe,],
 
   imports: [
     CommonModule,

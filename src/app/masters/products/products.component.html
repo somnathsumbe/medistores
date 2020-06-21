@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-md-12" *ngIf="productPage;else templateName">
   <div class="card">
     <div class="card-body">
       <h4 class="card-title">New Products</h4>
@@ -6,44 +6,33 @@
         <div class="row">
           <div class="col-md-4">
             <div class="form-group row">
-              <label class="col-sm-5 col-form-label" for="" for="categoryId">Category</label>
+              <input type="hidden" name="partyId" *ngIf="partyId">
+              <label class="col-sm-5 col-form-label" for="" for="categoryId"><span class="text-danger">*</span>Category</label>
               <div class="col-sm-7">
                 <select class="form-control form-control-sm" name="categoryId" formControlName="categoryId"
                   placeholder="Category Id" required>
                   <option [ngValue]="1">1</option>
                   <option [ngValue]="2">2</option>
                 </select>
-
-                <small class="text-danger"
-                *ngIf="!productsForm.get('categoryId').valid && productsForm.get('categoryId').touched">
-               Valid Category Id</small>
+                <small class="text-danger text-small text-capitalize"
+                  *ngIf="!productsForm.get('categoryId').valid && productsForm.get('categoryId').touched">
+                   Category Required</small>
               </div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="form-group row">
-              <label class="col-sm-5 col-form-label" for="" for="partyId">Party</label>
-              <div class="col-sm-7">
-                <select class="form-control form-control-sm" name="partyId" formControlName="partyId"
-                  placeholder="party Id">
-                  <option [ngValue]="1">1</option>
-                  <option [ngValue]="2">2</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="form-group row">
-              <label class="col-sm-5 col-form-label" for="" for="productName">Product Name</label>
+              <label class="col-sm-5 col-form-label" for="" for="productName"><span class="text-danger">*</span>Product Name</label>
               <div class="col-sm-7">
                 <input type="text" class="form-control form-control-sm" name="productName" formControlName="productName"
                   placeholder="Product Name">
+                  <small class="text-danger text-small text-capitalize"
+                  *ngIf="!productsForm.get('productName').valid && productsForm.get('productName').touched">
+                   product name required</small>
               </div>
+
             </div>
           </div>
-        </div>
-
-        <div class="row">
           <div class="col-md-4">
             <div class="form-group row">
               <label class="col-sm-5 col-form-label" for="" for="description">Description</label>
@@ -53,7 +42,9 @@
               </div>
             </div>
           </div>
+        </div>
 
+        <div class="row">
           <div class="col-md-4">
             <div class="form-group row">
               <label class="col-sm-5 col-form-label" for="" for="scientificName">Scientific Name</label>
@@ -65,10 +56,25 @@
           </div>
           <div class="col-md-4">
             <div class="form-group row">
-              <label class="col-sm-5 col-form-label" for="" for="batchNumber">Batch Number</label>
+              <label class="col-sm-5 col-form-label" for="" for="batchNumber"><span class="text-danger">*</span>Batch Number</label>
               <div class="col-sm-7">
                 <input type="text" class="form-control form-control-sm" name="batchNumber" formControlName="batchNumber"
                   placeholder="Batch Number">
+                  <small class="text-danger text-small text-capitalize"
+                  *ngIf="!productsForm.get('batchNumber').valid && productsForm.get('batchNumber').touched">
+                   Batch Number Required</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="" for="manufacturer"><span class="text-danger">*</span>Manufacturer</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control form-control-sm" name="manufacturer"
+                  formControlName="manufacturer" placeholder="Manufacturer">
+                  <small class="text-danger text-small text-capitalize"
+                  *ngIf="!productsForm.get('manufacturer').valid && productsForm.get('manufacturer').touched">
+                  Manufacturer Required</small>
               </div>
             </div>
           </div>
@@ -77,52 +83,49 @@
         <div class="row">
           <div class="col-md-4">
             <div class="form-group row">
-              <label class="col-sm-5 col-form-label" for="" for="manufacturer">Manufacturer</label>
-              <div class="col-sm-7">
-                <input type="text" class="form-control form-control-sm" name="manufacturer"
-                  formControlName="manufacturer" placeholder="Manufacturer">
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="form-group row">
-              <label class="col-sm-5 col-form-label" for="" for="drugGroup">Drug Group</label>
+              <label class="col-sm-5 col-form-label" for="" for="drugGroup"><span class="text-danger">*</span>Drug Group</label>
               <div class="col-sm-7">
                 <select class="form-control form-control-sm" name="drugGroup" formControlName="drugGroup"
                   placeholder="Drug Group">
                   <option [ngValue]="1">1</option>
                   <option [ngValue]="2">2</option>
                 </select>
+                <small class="text-danger text-small text-capitalize"
+                *ngIf="!productsForm.get('drugGroup').valid && productsForm.get('drugGroup').touched">
+                Drug Group Required </small>
               </div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="form-group row">
-              <label class="col-sm-5 col-form-label" for="" for="unitOfMeasure">Unit</label>
+              <label class="col-sm-5 col-form-label" for="" for="unitOfMeasure"><span class="text-danger">*</span>Unit</label>
               <div class="col-sm-7">
                 <select class="form-control form-control-sm" name="unitOfMeasure" formControlName="unitOfMeasure"
                   placeholder="Unit Of Measure">
                   <option [ngValue]="1">1</option>
                   <option [ngValue]="2">2</option>
                 </select>
+                <small class="text-danger text-small text-capitalize"
+                *ngIf="!productsForm.get('unitOfMeasure').valid && productsForm.get('unitOfMeasure').touched">
+                Unit of Measure Required </small>
               </div>
             </div>
           </div>
-
-        </div>
-
-        <div class="row">
           <div class="col-md-4">
             <div class="form-group row">
-              <label class="col-sm-5 col-form-label" for="drugContent">Drug Content</label>
+              <label class="col-sm-5 col-form-label" for="drugContent"><span class="text-danger">*</span>Drug Content</label>
               <div class="col-sm-7">
                 <input type="text" class="form-control form-control-sm" name="drugContent" formControlName="drugContent"
                   placeholder="Drug Content">
+                  <small class="text-danger text-small text-capitalize"
+                  *ngIf="!productsForm.get('drugContent').valid && productsForm.get('drugContent').touched">
+                  Drug Content Required </small>
               </div>
             </div>
           </div>
+        </div>
 
+        <div class="row">
           <div class="col-md-4">
             <div class="form-group row">
               <label class="col-sm-5 col-form-label" for="packingDescription">Packing Description</label>
@@ -134,12 +137,42 @@
           </div>
           <div class="col-md-4">
             <div class="form-group row">
-              <label class="col-sm-5 col-form-label" for="hsnId">HSN</label>
+              <label class="col-sm-5 col-form-label" for="hsnId"><span class="text-danger">*</span>HSN</label>
               <div class="col-sm-7">
                 <select class="form-control form-control-sm" name="hsnId" formControlName="hsnId" placeholder="HSN">
                   <option [ngValue]="1">1</option>
                   <option [ngValue]="2">2</option>
                 </select>
+                <small class="text-danger text-small text-capitalize"
+                *ngIf="!productsForm.get('hsnId').valid && productsForm.get('hsnId').touched">
+                HSN Required </small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="">Replacement</label>
+              <div class="col-sm-7">
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <div class="form-check form-check-success ">
+                      <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="isReplacement"
+                          formControlName="isReplacement" [value]=1>
+                        Yes
+                        <i class="input-helper"></i></label>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-check form-check-success">
+                      <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="isReplacement"
+                          formControlName="isReplacement" [value]=0>
+                        No
+                        <i class="input-helper"></i></label>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -166,43 +199,8 @@
           </div>
           <div class="col-md-4">
             <div class="form-group row">
-              <label class="col-sm-5 col-form-label" for="">Replacement</label>
-              <div class="col-sm-7">
-
-                <div class="form-group row">
-                  <div class="col-sm-6">
-                    <div class="form-check form-check-success ">
-                      <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="isReplacement"
-                          formControlName="isReplacement" [value]=1>
-                        Yes
-                        <i class="input-helper"></i></label>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="form-check form-check-success">
-                      <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="isReplacement"
-                          formControlName="isReplacement" [value]=0>
-                        No
-                        <i class="input-helper"></i></label>
-                    </div>
-                  </div>
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="row">
-
-          <div class="col-md-4">
-            <div class="form-group row">
               <label class="col-sm-5 col-form-label" for="">Discount Allow</label>
               <div class="col-sm-7">
-
                 <div class="form-group row">
                   <div class="col-sm-6">
                     <div class="form-check form-check-success ">
@@ -226,9 +224,12 @@
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="row">
           <div class="col-md-4">
             <div class="form-group row">
-              <label class="col-sm-5 col-form-label" for="calculateOn">Calculate</label>
+              <label class="col-sm-5 col-form-label" for="calculateOn">Calculate On</label>
               <div class="col-sm-7">
                 <select class="form-control form-control-sm" name="calculateOn" formControlName="calculateOn"
                   placeholder="Calculate">
@@ -250,15 +251,10 @@
               </div>
             </div>
           </div>
-        </div>
-
-        <div class="row">
           <div class="col-md-4">
             <div class="form-group row">
               <label class="col-sm-5 col-form-label" for="isDpcoProduct">Dpco Product</label>
               <div class="col-sm-7">
-
-
                 <div class="form-group row">
                   <div class="col-sm-6">
                     <div class="form-check form-check-success ">
@@ -282,14 +278,18 @@
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-12">
             <span class="input-group-btn">
               <div class="form-group row">
                 <div class="col-md-12">
                   <div class="float-right">
-                    <button type="submit" class="btn btn-outline-dark btn-icon-text" [disabled]="!productsForm.valid">Add</button>
-                    <button type="button" class="btn btn-outline-success btn-fw">View</button>
+                    <button type="submit" class="btn btn-outline-dark btn-icon-text"
+                      [disabled]="!productsForm.valid">Add</button>
+                    <button type="button" class="btn btn-outline-success btn-fw"
+                      (click)="productPageShow()">View</button>
                     <button type="button" class="btn btn-outline-warning btn-icon-text">Reset</button>
                   </div>
                 </div>
@@ -297,253 +297,145 @@
             </span>
           </div>
         </div>
-
       </form>
     </div>
   </div>
 </div>
 
-<div class="col-md-12 mt-3">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-header bg-behance text-white">
-          <div class="row">
-            <div class="col-md-6">
-              <h4 class="mt-2">Products List</h4>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group ">
-                <div class="input-group">
-                  <input type="text" class="form-control form-control-sm " [(ngModel)]="search"
-                    placeholder="Search By  Product Name " aria-label="Recipient's username"
-                    aria-describedby="basic-addon2">
-                  <div class="input-group-append">
-                    <button class="btn btn-sm btn-gradient-dark" type="button"> <i
-                        class="mdi mdi-account-search"></i></button>
-                  </div>
-                </div>
+<ng-template #templateName>
+  <div class="col-md-12 mt-3">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header bg-behance text-white">
+            <div class="row">
+              <div class="col-md-6">
+                <h4 class="mt-2">Products List</h4>
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="card-body border">
-
-          <div class="w3-padding w3-white notranslate my-3">
-            <div class="card bg-yellow-gradient text-dark">
-              <div class="card-body shadow">
-                <div class="row">
-                  <div class="col-md-12">
-                    <h4>Product Name <button type="button"
-                        class="btn btn-outline-dark btn-icon-text float-right">Edit</button></h4>
-                    <div class="clearfix"></div>
-                    <hr>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="card-description text-info  mb-3">
-                      Category <code class="text-dark">: text-uppercase text</code>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="card-description text-info  mb-3">
-                      Category <code class="text-dark">: text-uppercase text</code>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="card-description text-info  mb-3">
-                      Category <code class="text-dark">: text-uppercase text</code>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="card-description text-info  mb-3">
-                      Category <code class="text-dark">: text-uppercase text</code>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="card-description text-info  mb-3">
-                      Category <code class="text-dark">: text-uppercase text</code>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="card-description text-info  mb-3">
-                      Category <code class="text-dark">: text-uppercase text</code>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="card-description text-info  mb-3">
-                      Category <code class="text-dark">: text-uppercase text</code>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="card-description text-info  mb-3">
-                      Category <code class="text-dark">: text-uppercase text</code>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="card-description text-info  mb-3">
-                      Category <code class="text-dark">: text-uppercase text</code>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="card-description text-info  mb-3">
-                      Category <code class="text-dark">: text-uppercase text</code>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="card-description text-info  mb-3">
-                      Category <code class="text-dark">: text-uppercase text</code>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="card-description text-info  mb-3">
-                      Category <code class="text-dark">: text-uppercase text</code>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="card-description text-info  mb-3">
-                      Category <code class="text-dark">: text-uppercase text</code>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="card-description text-info  mb-3">
-                      Category <code class="text-dark">: text-uppercase text</code>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="card-description text-info  mb-3">
-                      Category <code class="text-dark">: text-uppercase text</code>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="card-description text-info  mb-3">
-                      Category <code class="text-dark">: text-uppercase text</code>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="card-description text-info  mb-3">
-                      Category <code class="text-dark">: text-uppercase text</code>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="card-description text-info  mb-3">
-                      Category <code class="text-dark">: text-uppercase text</code>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- <div class="col-12">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Products</h4>
-        <form class="form-sample" [formGroup]="hsnForm" (ngSubmit)="hsnDetailsData(hsnForm)">
-  
-          <div class="row">
-            <div class="col-md-5">
-              <div class="form-group row">
-                <label class="col-sm-5 col-form-label" for="" for="hsnCategory">HSN Category</label>
-                <div class="col-sm-7">
-                  <input type="text" class="form-control form-control-sm  name="hsnCategory" formControlName="hsnCategory"form-control form-control-sm- name="hsnCategory" formControlName="hsnCategory"sm" name="hsnCategory" formControlName="hsnCategory"
-                    placeholder="HSN Category ">
-  
-                  <input type="hidden" name="hsnId" *ngIf="hsnid">
-                  <small class="text-danger"
-                    *ngIf="!hsnForm.get('hsnCategory').valid && hsnForm.get('hsnCategory').touched">Please enter valid
-                    hsnCategory</small>
-                </div>
-              </div>
-  
-            </div>
-            <div class="col-md-5">
-              <div class="form-group row">
-                <label class="col-sm-5 col-form-label" for="" for="description">Description</label>
-                <div class="col-sm-7">
-                  <input type="text" class="form-control form-control-sm  name="hsnCategory" formControlName="hsnCategory"form-control form-control-sm- name="hsnCategory" formControlName="hsnCategory"sm" name="description" formControlName="description"
-                    placeholder="Description">
-                </div>
-              </div>
-            </div>
-  
-            <div class="col-md-2">
-              <div class="form-group row">
-                <div class="col-md-12">
-                  <button type="submit" class="btn btn-md btn-gradient-dark  mb-2 float-right"
-                    [disabled]="!hsnForm.valid">{{hsnid? 'Update' : 'Add'}}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
-  
-        <div class="row">
-          <div class="col-md-5">
-            <div class="form-group ">
-              <div class="input-group">
-                <input type="text" class="form-control form-control-sm  name="hsnCategory" formControlName="hsnCategory"form-control form-control-sm- name="hsnCategory" formControlName="hsnCategory"sm" [(ngModel)]="search"
-                  placeholder="Search By  Category " aria-label="Recipient's username" aria-describedby="basic-addon2">
-                <div class="input-group-append">
+              <div class="col-md-6">
+                <div class="form-group ">
+                  <div class="input-group">
+                    <input type="text" class="form-control form-control-sm " [(ngModel)]="search"
+                      placeholder="Search By  Product Name " aria-label="Recipient's username"
+                      aria-describedby="basic-addon2">
+                    <div class="input-group-append">
                       <button class="btn btn-sm btn-gradient-dark" type="button"> <i
-                      class="mdi mdi-account-search"></i></button>
+                          class="mdi mdi-account-search"></i></button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-  
-        <div class="row">
-          <div class="col-md-12">
-            <table class="table  table-bordered table-sm table-responsive-md ">
-              <thead class="bg-inverse-dark text-white">
-                <tr tabindex="0">
-                  <th>
-                    HSN Category
-                  </th>
-                  <th>
-                    Description
-                  </th>
-                  <th>
-                    Created Date
-                  </th>
-                  <th class="text-center">
-                    Actions
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr
-                  *ngFor="let hsnList of hsnLists |SearchFilter :search: 'hsnCategory'| paginate: { id: 'Medicine',itemsPerPage:5,currentPage: page,totalItems: totalRecords} ">
-                  <td class="py-1">
-                    {{hsnList.hsnCategory}}
-                  </td>
-                  <td>
-                    {{hsnList.description |titlecase}}
-                  </td>
-                  <td>
-                    {{hsnList.createdDate |date}}
-                  </td>
-                  <td class="text-center" style="width:120px; ">
-  
-                    <label class="badge badge-dark bg-inverse-dark arrowpointer "
-                      (click)="editHsnDetails(hsnList)">Edit</label>
-                    <label class="arrowpointer badge bg-danger bg-inverse-dark text-white"
-                      (click)="editHsnDetails(hsnList)">View</label>
-  
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <pagination-controls class="float-right mt-3" id="Medicine" maxSize="5" directionLinks="true"
+          <div class="card-body border">
+            <div class="w3-padding w3-white notranslate">
+              <div class="card bg-yellow-gradient text-dark" [ngClass]="{'bg-light ': odd}"
+                *ngFor="let productList of productLists |SearchFilter :search: 'productName' |paginate: { id: 'Medicine',itemsPerPage:2,currentPage: page,totalItems: totalRecords} ;let odd=odd;">
+                <div class="card-body shadow my-3">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <h4>Product Name : {{productList.productName | uppercase}}<button type="button"
+                          class="btn btn-outline-dark btn-icon-text float-right" (click)="editPageShow(productsForm)">Edit</button>
+                      </h4>
+                      <div class="clearfix"></div>
+                      <hr>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Party <code class="text-dark">: {{productList.partyId}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Description <code class="text-dark">: {{productList.description}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Scientific Name <code class="text-dark">: {{productList.scientificName}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Batch Number <code class="text-dark">: {{productList.batchNumber}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Manufacturer <code class="text-dark">: {{productList.manufacturer}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Drug Group <code class="text-dark">: {{productList.drugGroup}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Unit <code class="text-dark">: {{productList.unitOfMeasure}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Drug Content <code class="text-dark">: {{productList.drugContent}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Packing Description <code class="text-dark">:
+                          {{productList.packingDescription |readmore:40}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        HSN <code class="text-dark">: {{productList.hsnId}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Min Quantity <code class="text-dark">: {{productList.minSaleQuantity}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Max Quantity <code class="text-dark">: {{productList.maxSaleQuantity}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Replacement <code class="text-dark">: {{productList.isReplacement}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Discount Allow <code class="text-dark">: {{productList.isDiscountAllow}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Calculate On <code class="text-dark">: {{productList.calculateOn}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Sale Rate Method <code class="text-dark">: {{productList.saleRateMethod}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Dpco Product <code class="text-dark">: {{productList.isDpcoProduct}}</code>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <pagination-controls class="float-right mt-3" id="Medicine" maxSize="2" directionLinks="true"
               (pageChange)="page= $event"></pagination-controls>
           </div>
         </div>
       </div>
     </div>
-</div>
-   -->
+  </div>
+</ng-template>
+

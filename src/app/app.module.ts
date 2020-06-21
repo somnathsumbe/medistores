@@ -18,6 +18,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { LoadingBarRouterModule } from '@ngx-loading-bar/router';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 
+
 @NgModule({
   declarations: [
     AppComponent,
