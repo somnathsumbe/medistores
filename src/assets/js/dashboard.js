@@ -3,10 +3,12 @@
   $(function() {
 
     // Remove pro banner on close
-    document.querySelector('#bannerClose').addEventListener('click',function() {
-      document.querySelector('#proBanner').classList.add('d-none');
-    });
-    
+    if(document.querySelector('#bannerClose') && document.querySelector('#bannerClose').length > 0) {
+      document.querySelector('#bannerClose').addEventListener('click',function() {
+        document.querySelector('#proBanner').classList.add('d-none');
+      });
+    }
+   
     Chart.defaults.global.legend.labels.usePointStyle = true;
     
     if ($("#serviceSaleProgress").length) {
