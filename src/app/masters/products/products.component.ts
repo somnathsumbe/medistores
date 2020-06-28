@@ -11,75 +11,77 @@ import { MastersService } from 'src/app/shared/service/masters.service';
 export class ProductsComponent implements OnInit {
   productLists = [];
   productsForm: FormGroup;
-  partyId: number;
+  productId: number;
   search: string = '';
   totalRecords: string;
   page: number;
   productPage:boolean=true;
+  editupdate:boolean=false;
   constructor(private masterService: MastersService, private formBuilder: FormBuilder, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.gethsnDetails();
-    this.productsForm = new FormGroup({
-      categoryId: new FormControl(null,Validators.required),
-      productName: new FormControl(null,Validators.required),
-      description: new FormControl(null),
-      scientificName: new FormControl(null),
-      batchNumber: new FormControl(null,Validators.required),
-      manufacturer: new FormControl(null,Validators.required),
-      drugGroup: new FormControl(null,Validators.required),
-      unitOfMeasure: new FormControl(null,Validators.required),
-      drugContent: new FormControl(null,Validators.required),
-      packingDescription: new FormControl(null),
-      hsnId: new FormControl(null,Validators.required),
-      minSaleQuantity: new FormControl(null),
-      maxSaleQuantity: new FormControl(null),
-      isReplacement: new FormControl(1),
-      isDiscountAllow: new FormControl(0),
-      calculateOn: new FormControl(null),
-      saleRateMethod: new FormControl(null),
-      isDpcoProduct: new FormControl(0),
-      partyId: new FormControl()
+    this.productsForm = this.formBuilder.group({
+      productId:[],
+      productName:["",Validators.required],
+      description:[""],
+      scientificName:[""],
+      batchNumber:["",Validators.required],
+      mrp:[],
+      sellRate:[],
+      manufacturer:["",Validators.required],
+      manufactureDate:[""],
+      expiryDate:[""],
+      drugContent:["",Validators.required],
+      packingDescription:[""],
+      isReplacement:[1],
+      isDiscountAllow:[0],
+      isDpcoProduct:[0],
+      availableQuantity:[],
+      minSaleQuantity:[],
+      maxSaleQuantity:[],
+      drugGroup:["",Validators.required],
+      unitOfMeasure:[0,Validators.required],
+      categoryId:["",Validators.required],
+      calculateOn:[""],
+      saleRateMethod:[""],
+      hsn:["",Validators.required],
     });
   }
 
   gethsnDetails() {
-    this.masterService.fetchDetails('productList').subscribe(ProductList => {
-     debugger;
+    this.masterService.fetchDetails('product').subscribe(ProductList => {
       this.productLists = ProductList;
       this.totalRecords = ProductList.length;
     })
   }
 
-  addEditHSNDetails(productsForm: any) {
-console.log(productsForm.value)
-    this.masterService.addEditDetails('saveProduct', productsForm.value).subscribe((res) => {
+  addProuct(productsForm:NgForm) {
+    debugger;
+    this.masterService.addEditDetails('product', productsForm.value).subscribe((res) => {
       if (res) {
         this.gethsnDetails();
         this.productsForm.reset(this.productsForm.value);
         this.toastr.success('Products Data Save Successfully');
         productsForm.reset();
+        this.editupdate=false;
       } else {
         this.toastr.error('error occurred');
       }
     })
   }
 
-
-
   productPageShow=()=>this.productPage=false;
-  editPageShow=(productsForm)=>{
-
+  
+  backtopage=()=>this.productPage=true;
+ 
+  editPageShow=(product)=>{
+    this.editupdate=true;
     this.productPage=!this.productPage;
-
-    this.partyId = productsForm.partyId;
-    this.productsForm.controls['productName'].setValue(productsForm.productName);
-    // this.productsForm.controls['hsnCategory'].setValue(hsnList.hsnCategory);
-    // this.productsForm.controls['description'].setValue(hsnList.description);
-
-
-
-
+    this.productId= product.productId;
+    this.productsForm.patchValue(product);
 }
+
+resetdata=()=>this.productsForm.reset();
 
 }

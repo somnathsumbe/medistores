@@ -219,20 +219,16 @@
             <div class="form-group row">
               <label class="col-sm-5 col-form-label" for="customerType">Customer Type</label>
               <div class="col-sm-7">
-                <div class="form-group row">
-                  <div class="col-sm-6">
-                    <div class="form-check form-check-success ">
-                      <label class="form-check-label">
-                        <input type="radio" class="form-check-input" 
+                <div class="form-group">
+                  <div class="form-check form-check-success ">
+                    <label class="form-check-label">
+                      <input type="radio" class="form-check-input" 
                           formControlName="customerType" value="Dealer">Dealer<i class="input-helper"></i></label>
-                    </div>
                   </div>
-                  <div class="col-sm-6">
-                    <div class="form-check form-check-success">
-                      <label class="form-check-label">
-                        <input type="radio" class="form-check-input" 
-                          formControlName="customerType" value="Retailer">Retailer<i class="input-helper"></i></label>
-                    </div>
+                  <div class="form-check form-check-success">
+                    <label class="form-check-label">
+                      <input type="radio" class="form-check-input" 
+                        formControlName="customerType" value="Retailer">Retailer<i class="input-helper"></i></label>
                   </div>
                 </div>
               </div>
@@ -253,15 +249,25 @@
           </div>
           <div class="col-md-4">
             <div class="form-group row">
-              <label class="col-sm-5 col-form-label" for="bankId">Bank Name</label>
+              <label class="col-sm-5 col-form-label" for="openBalance">Opening Balance</label>
               <div class="col-sm-7">
-                <select class="form-control form-control-sm" name="bankId" formControlName="bankId">
-                  <option value=" "> Select Bank</option>
-                  <option value="120"> HDFC Bank</option>
-                  <option *ngFor="let bank of bankList" [ngValue]="bank.bankId">
-                    {{ bank.bankName}}
-                    </option>
-                </select>
+                <input type="text" class="form-control form-control-sm" name="openBalance" formControlName="openBalance"
+                placeholder="Opening Balance">
+                <small class="text-danger"
+                *ngIf="!partyForm.get('openBalance').valid && partyForm.get('openBalance').touched">Please enter
+                Opening Balance</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="closingBalance">Closing Balance</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control form-control-sm" name="closingBalance" formControlName="closingBalance"
+                placeholder="Closing Balance">
+                <small class="text-danger"
+                *ngIf="!partyForm.get('closingBalance').valid && partyForm.get('closingBalance').touched">Please enter 
+                Closing Balance</small>
               </div>
             </div>
           </div>
@@ -319,6 +325,9 @@
                       <h4>Firm Name : {{party.firmName | uppercase}}<button type="button"
                           class="btn btn-outline-dark btn-icon-text float-right" (click)="editPageShow(party)">Edit</button>
                       </h4>
+                      
+                       <h4>Opening Balance : {{party.openBalance}}</h4>
+                        <h4>Closing Balance : {{party.closingBalance}}</h4>
                       <div class="clearfix"></div>
                       <hr>
                     </div>

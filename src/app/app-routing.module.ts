@@ -6,13 +6,11 @@ import { ForgetpasswordComponent } from './administration/forgetpassword/forgetp
 import { SignupComponent } from './administration/signup/signup.component';
 import { ProfileComponent } from './administration/profile/profile.component';
 import { BankdetailsComponent } from './administration/bankdetails/bankdetails.component';
-import { SalesComponent } from './masters/sales/sales.component';
-import { PurchaseComponent } from './masters/purchase/purchase.component';
 import { HNSDetailsComponent } from './masters/hsndetails/hnsdetails.component';
 import { PartyComponent } from './masters/party/party.component';
 import { ProductsComponent } from './masters/products/products.component';
 import { TransportComponent } from './masters/transport/transport.component';
-
+import {OrderComponent} from './masters/order/order.component';
 
 const routes: Routes = [
   { path: '', redirectTo:'loginPage', pathMatch:'full'},
@@ -22,8 +20,8 @@ const routes: Routes = [
   { path: 'forgetPassword', component: ForgetpasswordComponent},
   { path: 'ragisterUser', component: SignupComponent},
   { path: 'HSN', component: HNSDetailsComponent},
-  { path:"purchase", component:PurchaseComponent, pathMatch:'full'},
-  { path: "sales", component: SalesComponent },
+  { path:"purchase", component:OrderComponent},
+  { path: "sales", component: OrderComponent },
   { path: "party", component: PartyComponent },
   { path: "products", component: ProductsComponent },
   { path: "transport", component: TransportComponent },
