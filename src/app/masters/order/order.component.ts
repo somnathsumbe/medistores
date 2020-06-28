@@ -4,11 +4,13 @@ import { ToastrService } from 'ngx-toastr';
 import { MastersService } from 'src/app/shared/service/masters.service';
 import { CustomDatePipe } from '../pipe/custom-date.pipe';
 import { FilterFieldPipe } from '../pipe/filter-field.pipe';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
-  styleUrls: ['./order.component.css']
+  styleUrls: ['./order.component.css'],
+  preserveWhitespaces: true
 })
 export class OrderComponent implements OnInit {
   IsPurchaseRoute: boolean = false;
@@ -22,16 +24,21 @@ export class OrderComponent implements OnInit {
   transports: [];
   customers: [];
   IsOrderView: boolean = false;
+  orderType: any;
 
   constructor( 
     private formBuilder: FormBuilder, 
     private toastr: ToastrService,
     private masterService: MastersService, 
     private customDatePipe: CustomDatePipe,
-    private filterFieldPipe: FilterFieldPipe) {
+    private filterFieldPipe: FilterFieldPipe,
+    private activatedRoute: ActivatedRoute
+    ) {
   }
 
   ngOnInit(): void {
+
+    this.orderType = this.activatedRoute.snapshot.routeConfig.path;
 
     // Get the products list 
     this.masterService.fetchDetails('product').subscribe(products => {
@@ -59,7 +66,7 @@ export class OrderComponent implements OnInit {
         discountAmount: new FormControl(null),
         totalAmount: new FormControl(null, Validators.required),
         orderAddress: new FormControl(null, Validators.required),
-        orderType:new FormControl(null, Validators.required),
+        orderType:new FormControl(this.orderType, Validators.required),
         paymentMode: new FormControl(null, Validators.required),
         scheme: new FormControl(null),
         unitOfMeasure:new FormControl(""),
@@ -67,6 +74,7 @@ export class OrderComponent implements OnInit {
         transportation: new FormControl(null, Validators.required)
        
     })
+    this.orderForm.controls['orderType'].setValue(this.orderType);
   }
 
   addEditOrderDetails(orderForm) {
@@ -90,21 +98,21 @@ export class OrderComponent implements OnInit {
   } 
 
   getCustomerDetails(customerId) {
-    const selectedCustomer = this.filterFieldPipe.transform(customerId, this.customers);
+    const selectedCustomer = this.filterFieldPipe.transform(customerId, this.customers, 'customerId');
     if(selectedCustomer) {
-      return `Firm Name:${selectedCustomer.firmName}<br/>Customer Name: ${selectedCustomer.firstName} ${selectedCustomer.middleName} ${selectedCustomer.lastName}`
+      return `<h4>Firm Name:  ${selectedCustomer.firmName}</h4><h4>Customer Name:  ${selectedCustomer.firstName} ${selectedCustomer.middleName} ${selectedCustomer.lastName}</h4>`
     }
     return '';
   }
   getProductDetails(productId) {
-    const selectedProduct = this.filterFieldPipe.transform(productId, this.products);
+    const selectedProduct = this.filterFieldPipe.transform(productId, this.products, 'productId');
     if(selectedProduct) {
       return selectedProduct.productName;
     }
     return '';
   }
   getTransportDetails(transportId) {
-    const selectedTransport = this.filterFieldPipe.transform(transportId, this.transports);
+    const selectedTransport = this.filterFieldPipe.transform(transportId, this.transports, 'transportId');
     if(selectedTransport) {
       return selectedTransport.transportName;
     }
@@ -114,15 +122,16 @@ export class OrderComponent implements OnInit {
     let total = 0;
     let {mrp, sellRate, gstAmount, discountAmount, orderQuantity} = this.orderForm.controls;
     if(mrp != sellRate) {
+      if(this.orderForm.controls['orderQuantity'].value > 1) {
+        total = total * parseInt(this.orderForm.controls['orderQuantity'].value);
+      }
       if(gstAmount) {
         total = parseInt(this.orderForm.controls['sellRate'].value) + parseInt(this.orderForm.controls['gstAmount'].value);
       }
       if(discountAmount) {
         total = total - parseInt(this.orderForm.controls['discountAmount'].value)
       }
-      if(this.orderForm.controls['orderQuantity'].value > 1) {
-        total = total * parseInt(this.orderForm.controls['orderQuantity'].value);
-      }
+     
       this.orderForm.controls['totalAmount'].setValue(total);
     }
   }
@@ -131,7 +140,7 @@ export class OrderComponent implements OnInit {
     this.orderId = order.orderId;
     this.orderForm.patchValue(order);
     this.orderForm.controls['orderDate'].setValue(this.customDatePipe.transform(order.orderDate));
-    //this.orderForm.controls['isActive'].setValue(order.isActive);
+    this.orderForm.controls['billDate'].setValue(this.customDatePipe.transform(order.billDate));
   } 
 
 }
