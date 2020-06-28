@@ -1,1 +1,161 @@
-<p>transport works!</p>
+<div class="col-12">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Transport Details</h4>
+      <form class="form-sample" [formGroup]="addTransportDetails" (ngSubmit)="transportDetails(addTransportDetails)">
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label text-capitalize" for="cityId">City</label>
+              <div class="col-sm-7">
+                <select class="form-control form-control-sm text-capitalize" name="cityId" formControlName="cityId"
+                  placeholder="cityId">
+                  <option [ngValue]="1">Select City</option>
+                  <option *ngFor="let cityList of cityList" [ngValue]="cityList.id">{{cityList.name}}</option>
+                </select>
+                <div *ngIf="!transportId">
+                  <input type="hidden" formControlName="transportId">
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label text-capitalize" for="transportName"><span
+                  class="text-danger">*</span>transport Name</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control form-control-sm text-capitalize" name="transportName"
+                  formControlName="transportName" placeholder="transport Name">
+                <small class="text-danger text-capitalize"
+                  *ngIf="!addTransportDetails.get('transportName').valid && addTransportDetails.get('transportName').touched">
+                  Valid transport Name</small>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label text-capitalize" for="address">address</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control form-control-sm text-capitalize" name="address"
+                  formControlName="address" placeholder="address">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label text-capitalize" for="transportType">transport Type</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control form-control-sm text-capitalize" name="transportType"
+                  formControlName="transportType" placeholder="transport Type">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <span class="input-group-btn">
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <div class="float-right">
+                    <button type="submit" class="btn btn-outline-dark btn-icon-text"
+                      [disabled]="addTransportDetails.invalid">{{editupdate ? 'Update' : 'Add'}}</button>
+                    <button type="button" class="btn btn-outline-warning btn-icon-text"
+                      (click)="resetdata()">Reset</button>
+                  </div>
+                </div>
+              </div>
+            </span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-12 mt-3">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header1 bg-behance text-white">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mt-3"> Transport Details List</div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group ">
+                <div class="input-group">
+                  <input type="text" class="form-control form-control-sm mt-2 " [(ngModel)]="search"
+                    placeholder="Search By  Product Name " aria-label="Recipient's username"
+                    aria-describedby="basic-addon2">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body border">
+
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table  table-bordered table-sm table-responsive-md ">
+                <thead class="bg-inverse-dark text-white text-capitalize">
+                  <tr tabindex="0">
+                    <th>
+                      City
+                    </th>
+                    <th>
+                      Transport Name
+                    </th>
+                    <th>
+                      Address
+                    </th>
+                    <th>
+                      transport Type
+                    </th>
+                    <th class="text-center">
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    *ngFor="let transsportList of transsportLists |SearchFilter :search: 'transportName'| paginate: { id: 'Medicine',itemsPerPage:5,currentPage: page,totalItems: totalRecords} ">
+                    <td class="py-1">
+                      {{transsportList.cityId}}
+                    </td>
+                    <td>
+                      {{transsportList.transportName |titlecase}}
+                    </td>
+                    <td>
+                      {{transsportList.address |titlecase}}
+                    </td>
+                    <td>
+                      {{transsportList.transportType |titlecase}}
+                    </td>
+                    <td class="text-center" style="width:120px; ">
+
+                      <label class="badge badge-dark bg-inverse-dark arrowpointer btn-block "
+                        (click)="editHsnDetails(transsportList)">Edit</label>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <pagination-controls class="float-right mt-3" id="Medicine" maxSize="5" directionLinks="true"
+                (pageChange)="page= $event"></pagination-controls>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -29,6 +29,7 @@ import { LoadingBarModule } from '@ngx-loading-bar/core';
     PagenotfoundComponent,
     SidebarComponent,
     FooterComponent,
+
   ],
   imports: [
     BrowserModule,
