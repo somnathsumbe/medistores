@@ -1,0 +1,8 @@
+.number-text::-webkit-outer-spin-button,
+.number-text::-webkit-inner-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}
+.number-text[type="number"] {
+   -moz-appearance: textfield;
+}
