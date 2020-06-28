@@ -17,6 +17,7 @@
                 </select>
 
                 <input type="hidden" name="orderId" *ngIf="orderId">
+                <input type="hidden" name="orderType">
                 <small class="text-danger" *ngIf="!orderForm.get('productId').valid && orderForm.get('productId').touched">Please select product</small>
               </div>
             </div>
@@ -70,25 +71,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="form-group row">
-              <label class="col-sm-5 col-form-label" for="orderType">Order Type</label>
-              <div class="col-sm-7">
-                <div class="form-group">
-                  <div class="form-check form-check-success ">
-                    <label class="form-check-label">
-                      <input type="radio" class="form-check-input" 
-                          formControlName="orderType" value="sale">Sale<i class="input-helper"></i></label>
-                  </div>
-                  <div class="form-check form-check-success">
-                    <label class="form-check-label">
-                    <input type="radio" class="form-check-input" 
-                        formControlName="orderType" value="purchase">Purchase<i class="input-helper"></i></label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+         
           <div class="col-md-4">
             <div class="form-group row">
               <label class="col-sm-5 col-form-label" for="billNumber">Bill Number</label>
@@ -115,7 +98,7 @@
               <label class="col-sm-5 col-form-label" for="mrp">Product MRP</label>
               <div class="col-sm-7">
                 <input type="number" class="form-control form-control-sm" name="mrp" formControlName="mrp"
-                  placeholder="Product MRP">
+                  placeholder="Product MRP" (focus)="calculateTotalAmount()">
                   <small class="text-danger"
                   *ngIf="!orderForm.get('mrp').valid && orderForm.get('mrp').touched">Please enter product price</small>
               </div>
@@ -126,7 +109,7 @@
               <label class="col-sm-5 col-form-label" for="sellRate">Product Sale Rate</label>
               <div class="col-sm-7">
                 <input type="text" class="form-control form-control-sm" name="sellRate" formControlName="sellRate"
-                  placeholder="Product Sale Rate">
+                  placeholder="Product Sale Rate" (focus)="calculateTotalAmount()">
                   <small class="text-danger"
                   *ngIf="!orderForm.get('sellRate').valid && orderForm.get('sellRate').touched">Please enter Product sale rate</small>
               </div>
@@ -137,7 +120,7 @@
               <label class="col-sm-5 col-form-label" for="gstAmount">GST Amount</label>
               <div class="col-sm-7">
                 <input type="text" class="form-control form-control-sm" name="gstAmount" formControlName="gstAmount"
-                  placeholder="GST Amount">
+                  placeholder="GST Amount" (focus)="calculateTotalAmount()">
                   <small class="text-danger"
                   *ngIf="!orderForm.get('gstAmount').valid && orderForm.get('gstAmount').touched">Please enter GST Amount</small>
               </div>
@@ -148,7 +131,7 @@
               <label class="col-sm-5 col-form-label" for="discountAmount">Applicable Discount Amount</label>
               <div class="col-sm-7">
                 <input type="number" class="form-control form-control-sm" name="discountAmount" formControlName="discountAmount"
-                  placeholder="Applicable Discount">
+                  placeholder="Applicable Discount" (focus)="calculateTotalAmount()">
                </div>
             </div>
           </div>
@@ -214,18 +197,12 @@
               </div>
             </div>
           </div>
-          <div class="col-md-8">
-            <span class="input-group-btn">
-              <div class="form-group row">
-                <div class="col-md-12">
-                  <div class="float-right">
-                    <button type="submit" class="btn btn-outline-dark btn-icon-text" [disabled]="!orderForm.valid">{{orderId? 'Add' : 'Update'}}</button>
-                    <button type="button" class="btn btn-outline-success btn-fw" (click)="showOrderView()">View</button>
-                    <button type="reset" class="btn btn-outline-warning btn-icon-text">Reset</button>
-                  </div>
-                </div>
-              </div>
-            </span>
+          <div class="col-md-12 float-right">
+           
+            <button type="submit" class="btn btn-outline-dark btn-icon-text" [disabled]="!orderForm.valid">{{orderId? 'Update' : 'Add'}}</button>
+            <button type="button" class="btn btn-outline-success btn-fw" (click)="showOrderView()">View</button>
+            <button type="reset" class="btn btn-outline-warning btn-icon-text">Reset</button>
+                 
           </div>
         </div>
       </form>
@@ -261,7 +238,7 @@
           <div class="card-body border">
             <div class="w3-padding w3-white notranslate">
               <div class="card bg-yellow-gradient text-dark" [ngClass]="{'bg-light ': odd}"
-                *ngFor="let order of orders |SearchFilter :search: 'orderType' |paginate: { id: 'Medicine',itemsPerPage:2,currentPage: page,totalItems: totalRecords} ;let odd=odd;">
+                *ngFor="let order of orders | paginate: { id: 'Medicine',itemsPerPage:2,currentPage: page,totalItems: totalRecords} ;let odd=odd;">
                 <div class="card-body shadow my-3">
                   <div class="row">
                     <div class="col-md-12">
@@ -272,8 +249,8 @@
                       <h4>Order Type : {{order.orderType}}</h4>
                      
                       <h4>Customer Details :</h4>
-                      <div>
-                        {{getCustomerDetails(order.customer)}}
+                      <div [innerHTML] ="getCustomerDetails(order.customer)">
+
                       </div>
                       <div class="clearfix"></div>
                       <hr>
@@ -305,7 +282,7 @@
                     </div>
                     <div class="col-sm-4">
                       <div class="card-description text-info  mb-3">
-                      Product Sale Rate <code class="text-dark">: {{order.saleRate}}</code>
+                      Product Sale Rate <code class="text-dark">: {{order.sellRate}}</code>
                       </div>
                     </div>
                     <div class="col-sm-4">
@@ -313,19 +290,19 @@
                         Applied Scheme <code class="text-dark">: {{order.scheme}}</code>
                       </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-4" *ngIf="order.discountAmount">
                       <div class="card-description text-info  mb-3">
                         Discount <code class="text-dark">: {{order.discountAmount}} %</code>
                       </div>
                     </div>
                     <div class="col-sm-4">
                       <div class="card-description text-info  mb-3">
-                        Payment Method <code class="text-dark">: {{order.paymentMode}} %</code>
+                        Payment Method <code class="text-dark">: {{order.paymentMode}}</code>
                       </div>
                     </div>
                     <div class="col-sm-4">
                       <div class="card-description text-info  mb-3">
-                        Total Amount <code class="text-dark">: {{order.totalAmount}} %</code>
+                        Total Amount <code class="text-dark">: {{order.totalAmount}}</code>
                       </div>
                     </div>
                     <div class="col-sm-4">
