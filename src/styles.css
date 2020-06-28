@@ -44,3 +44,14 @@ select.ng-valid.ng-touched , input.ng-valid.ng-touched {
   margin-bottom: 10px;
   padding-left: 0;
 }
+
+.card-header1 {
+  padding: 0.0rem 1.25rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #ebedf2;
+  padding:10px 5px;
+  font-weight: 500;
+}
