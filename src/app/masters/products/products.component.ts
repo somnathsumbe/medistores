@@ -56,7 +56,7 @@ export class ProductsComponent implements OnInit {
     })
   }
 
-  addProuct(productsForm:NgForm) {
+  addProuct(productsForm:any) {
     debugger;
     this.masterService.addEditDetails('product', productsForm.value).subscribe((res) => {
       if (res) {

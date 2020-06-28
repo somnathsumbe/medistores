@@ -15,7 +15,8 @@ export class HNSDetailsComponent implements OnInit {
   code: number;
   search: string = '';
   totalRecords: string;
-  page: number
+  page: number;
+  hsnid:boolean;
 
   constructor( 
     private formBuilder: FormBuilder, 
@@ -28,6 +29,7 @@ export class HNSDetailsComponent implements OnInit {
     this.hsnForm =this.formBuilder.group({
       code:['',Validators.required],
       value:[''],
+      hsnid:[''],
 
     });
   }

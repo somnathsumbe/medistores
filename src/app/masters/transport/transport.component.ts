@@ -51,7 +51,7 @@ export class TransportComponent implements OnInit {
     })
   }
 
-  transportDetails(Form: NgForm) {
+  transportDetails(Form: any) {
     this.masterService.addEditDetails('/transport', Form.value).subscribe((res) => {
       if (res) {
         this.gethsnDetails();
