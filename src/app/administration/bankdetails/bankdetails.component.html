@@ -2,32 +2,33 @@
   <div class="card">
     <div class="card-body">
       <h4 class="card-title">Banks Details</h4>
-      <form class="form-sample" #bankDetails="ngForm" (ngSubmit)="bankDetailsData(bankDetails)">
+      <form class="form-sample" [formGroup]="bankForm" (ngSubmit)="bankDetailsData(bankForm)">
         <div class="row">
           <div class="col-md-4">
             <div class="form-group row">
               <label class="col-sm-4 col-form-label" for="customerId">Party</label>
               <div class="col-sm-8">
-                <select class="form-control form-control-sm" id="customerId" name="customerId"  ngModel #customerId='ngModel' required>
+                <select class="form-control form-control-sm" id="customerId" name="customerId" formControlName="customerId">
                   <option value="" selected>Select Party </option>
-                  <option *ngFor="let party of parties"  [value]="party.value">{{party.label}}</option>
+                  <option *ngFor="let party of partiesList"  [value]="party.value">{{party.label}}</option>
                 </select>
-                <span *ngIf="!customerId.valid && (customerId.touched || customerId.dirty)" class="text-danger small">
-                  <small *ngIf='customerId.errors["required"]'>Select party</small>
+                <span *ngIf="!bankForm.get('customerId').valid && ((bankForm.get('customerId').touched) || (bankForm.get('customerId').dirty))" class="text-danger small">
+                  Select party
                 </span>
               </div>              
             </div>
           </div>
           <div class="col-md-4">
             <div class="form-group row">
-              <label class="col-sm-4 col-form-label" for="bankId">Bank Name</label>
+              <label class="col-sm-4 col-form-label" for="bankName">Bank Name</label>
               <div class="col-sm-8">
-                <select class="form-control form-control-sm" id="bankId" name="bankId" ngModel #bankId='ngModel' required>
+                <input type="hidden" value="" name="bankId" id="bankId" formControlName="bankId">
+                <select class="form-control form-control-sm" id="bankName" name="bankName" formControlName="bankName">
                   <option value="" selected>Select bank </option>
-                  <option *ngFor="let bank of BankList"  [value]="bank">{{bank}}</option>
+                  <option *ngFor="let bank of bankList"  [value]="bank">{{bank}}</option>
                 </select>
-                <span *ngIf="!bankId.valid && (bankId.touched || bankId.dirty)" class="text-danger small">
-                  <small *ngIf='bankId.errors["required"]'>Bank required</small>
+                <span *ngIf="!bankForm.get('bankName').valid && ((bankForm.get('bankName').touched) || (bankForm.get('bankName').dirty))" class="text-danger small">
+                  Select bank
                 </span>
               </div>
             </div>
@@ -36,60 +37,33 @@
             <div class="form-group row">
               <label class="col-sm-4 col-form-label" for="address">Address</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control form-control-sm" id="address" name="address" ngModel #address='ngModel'
-                  required>
-                <span *ngIf="!address.valid && (address.touched || address.dirty)" class="text-danger small">
-                  <small *ngIf='address.errors["required"]'>Bank Address required</small>
+                <input type="text" class="form-control form-control-sm" placeholder="Address" id="address" name="address" formControlName="address">
+                <span *ngIf="!bankForm.get('address').valid && ((bankForm.get('address').touched) || (bankForm.get('address').dirty))" class="text-danger small">
+                  Enter Address
                 </span>
               </div>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-4">
-            <div class="form-group row">
-              <label class="col-sm-4 col-form-label" for="branchCode">Branch Code</label>
-              <div class="col-sm-8">
-                <input type="text" class="form-control form-control-sm" id="branchCode" name="branchCode" ngModel #branchCode='ngModel'
-                  required />
-                <span *ngIf="!branchCode.valid && (branchCode.touched || branchCode.dirty)" class="text-danger small">
-                  <small *ngIf='branchCode.errors["required"]'>Branch Code required</small>
-                </span>
-              </div>
-            </div>
-          </div>
           <div class="col-md-4">
             <div class="form-group row">
               <label class="col-sm-4 col-form-label" for="ifscCode">IFSC Code</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control form-control-sm" id="ifscCode" name="ifscCode" ngModel #ifscCode='ngModel'
-                  required />
-                <span *ngIf="!ifscCode.valid && (ifscCode.touched || ifscCode.dirty)" class="text-danger small">
-                  <small *ngIf='ifscCode.errors["required"]'>Bank IFSC Code required</small>
+                <input type="text" class="form-control form-control-sm" placeholder="IFSC Code" id="ifscCode" name="ifscCode" formControlName="ifscCode" />
+                <span *ngIf="!bankForm.get('ifscCode').valid && ((bankForm.get('ifscCode').touched) || (bankForm.get('ifscCode').dirty))" class="text-danger small">
+                  Enter IFSC Code
                 </span>
               </div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="form-group row">
-              <label class="col-sm-4 col-form-label" for="postCode">Account No </label>
+              <label class="col-sm-4 col-form-label" for="postCode">Account No. </label>
               <div class="col-sm-8">
-                <input type="number" class="form-control form-control-sm number-text" id="bankAccount" name="bankAccount" ngModel #bankAccount='ngModel' required />
-                <span *ngIf="!bankAccount.valid && (bankAccount.touched || bankAccount.dirty)" class="text-danger small">
-                  <small *ngIf='bankAccount.errors["required"]'>Account Number required</small>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="form-group row">
-              <label class="col-sm-4 col-form-label" for="postCode">Post Code </label>
-              <div class="col-sm-8">
-                <input type="number" class="form-control form-control-sm number-text" id="postCode" name="postCode" ngModel #postCode='ngModel' required />
-                <span *ngIf="!postCode.valid && (postCode.touched || postCode.dirty)" class="text-danger small">
-                  <small *ngIf='postCode.errors["required"]'>Post IFSC Code required</small>
+                <input type="number" class="form-control form-control-sm number-text" placeholder="Account No" id="accountNumber" name="accountNumber" formControlName="accountNumber" />
+                <span *ngIf="!bankForm.get('accountNumber').valid && ((bankForm.get('accountNumber').touched) || (bankForm.get('accountNumber').dirty))" class="text-danger small">
+                  Enter Account No.
                 </span>
               </div>
             </div>
@@ -98,12 +72,12 @@
             <div class="form-group row">
               <label class="col-sm-4 col-form-label" for="cityName">City</label>
               <div class="col-sm-8">
-                <select class="form-control form-control-sm" id="cityName" name="cityName" ngModel #cityName='ngModel' required>
+                <select class="form-control form-control-sm" id="cityName" name="cityName" formControlName="cityName" >
                   <option value="" selected>Select City </option>
-                  <option *ngFor="let city of Cities"  [value]="city.name">{{city.name}}</option>
+                  <option *ngFor="let city of cityList"  [value]="city.name">{{city.name}}</option>
                 </select>
-                <span *ngIf="!cityName.valid && (cityName.touched || cityName.dirty)" class="text-danger small">
-                  <small *ngIf='cityName.errors["required"]'>Select City</small>
+                <span *ngIf="!bankForm.get('cityName').valid && ((bankForm.get('cityName').touched) || (bankForm.get('cityName').dirty))" class="text-danger small">
+                  Select city
                 </span>
               </div>
             </div>
@@ -111,14 +85,60 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <div class="form-group">
-              <button type="reset" class="btn btn-gradient-success mr-2">Cancel</button>
-              <button type="submit" class="btn btn-gradient-primary mr-2" desabled
-                [disabled]="!bankDetails.valid">Submit</button>
-            </div>
+            <span class="input-group-btn">
+              <div class="form-group">
+                <div class="float-right">
+                  <button type="submit" class="btn btn-outline-dark btn-icon-text" [disabled]="!bankForm.valid">
+                    <span *ngIf="editBankId">Save</span>
+                    <span *ngIf="!editBankId">Add</span>
+                  </button>
+                  <button type="button" class="btn btn-outline-warning btn-icon-text" (click)="resetbankform()">
+                    <span *ngIf="editBankId">Cancel</span>
+                    <span *ngIf="!editBankId">Reset</span>
+                  </button>
+                </div>
+              </div>
+            </span>
           </div>
         </div>
       </form>
+    </div>
+    <div class="row card-body">
+      <div class="col-md-12">
+        <table class="table table-bordered table-sm table-responsive-md">
+          <thead class="bg-inverse-dark text-white">
+            <tr>
+              <th width="20%">Party</th>
+              <th width="20%">Bank Name</th>
+              <th width="13%">Account No.</th>
+              <th width="13%">City</th>
+              <th width="19%">Address</th>
+              <th width="9%">IFSC Code</th>
+              <th class="text-center" width="6%">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!--  |SearchFilter :search: 'bankName'| paginate: { id: 'Medicine',itemsPerPage:5,currentPage: page,totalItems: totalRecords} " -->
+            <tr *ngFor="let partybank of partybankDetailList">
+              <td>{{partybank.customerId}}</td>
+              <td>{{partybank.bankName}}</td>
+              <td>{{partybank.accountNumber}}</td>
+              <td>{{partybank.cityName}}</td>
+              <td>{{partybank.address}}</td>
+              <td>{{partybank.ifscCode}}</td>
+              <td class="text-center">
+                <span class="badge badge-dark bg-inverse-dark arrowpointer "
+                  (click)="editBankDetails(partybank)">Edit</span>
+              </td>
+            </tr>
+            <tr *ngIf="!partybankDetailList.length">
+              <td colspan="7">No any bank details Found.</td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- <pagination-controls class="float-right mt-3" id="Medicine" maxSize="5" directionLinks="true"
+          (pageChange)="page= $event"></pagination-controls> -->
+      </div>
     </div>
   </div>
 </div>
