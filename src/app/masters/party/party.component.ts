@@ -39,7 +39,7 @@ export class PartyComponent implements OnInit {
         middleName: new FormControl(null, Validators.required),
         lastName: new FormControl(null, Validators.required),
         address: new FormControl(null, Validators.required),
-        scheme: new FormControl(null, Validators.required),
+        scheme: new FormControl(null),
         discount:new FormControl(null, Validators.required),
         mobileNumber: new FormControl(null, Validators.required),
         emailId: new FormControl(null, Validators.required),
@@ -51,9 +51,10 @@ export class PartyComponent implements OnInit {
         panNumber: new FormControl(null, Validators.required),
         isActive:new FormControl(null, Validators.required),
         customerType: new FormControl(null, Validators.required),
-        bankId: new FormControl(null, Validators.required),
         city: new FormControl(null, Validators.required),
-        customerId: new FormControl(null)
+        customerId: new FormControl(null),
+        openBalance: new FormControl(null, Validators.required),
+        closingBalance: new FormControl(null, Validators.required)
     })
   }
 
