@@ -1,98 +1,68 @@
 <div class="col-12">
   <div class="card">
     <div class="card-body">
-      <div class="alert alert-success alert-dismissible fade show"  *ngIf="msgState">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Message</strong> {{errorMsg}}
-      </div>
-
       <h4 class="card-title">User Profile</h4>
       <form class="form-sample" #profile="ngForm" (ngSubmit)="profileData(profile)">
         <p class="card-description"> Personal info </p>
+
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-4">
             <div class="form-group row">
               <label class="col-sm-5 col-form-label" for="firstName">First Name</label>
               <div class="col-sm-7">
-
-                <input type="text" class="form-control form-control-sm" id="firstName" name="firstName" ngModel #firstName='ngModel'
-                  placeholder="First Name" required>
+                <input type="text" class="form-control form-control-sm" id="firstName" name="firstName" ngModel
+                  #firstName='ngModel' placeholder="First Name" required>
                 <span *ngIf="!firstName.valid && (firstName.touched || firstName.dirty)" class="text-danger small">
                   <small *ngIf='firstName.errors["required"]'>firstName required</small>
                 </span>
               </div>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-4">
             <div class="form-group row">
               <label class="col-sm-5 col-form-label" for="middleName">Middle Name</label>
               <div class="col-sm-7">
-
-                <input type="text" class="form-control form-control-sm" id="middleName" name="middleName" ngModel #middleName='ngModel'
-                  placeholder="Middle Name " required>
+                <input type="text" class="form-control form-control-sm" id="middleName" name="middleName" ngModel
+                  #middleName='ngModel' placeholder="Middle Name " required>
                 <span *ngIf="!middleName.valid && (middleName.touched || middleName.dirty)" class="text-danger small">
                   <small *ngIf='middleName.errors["required"]'>middleName required</small>
                 </span>
               </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
+
+          <div class="col-md-4">
             <div class="form-group row">
               <label class="col-sm-5 col-form-label" for="lastName">Last Name</label>
               <div class="col-sm-7">
-
-                <input type="text" class="form-control form-control-sm" id="lastName" name="lastName" ngModel #lastName='ngModel'
-                  placeholder="Last Name" required>
-
+                <input type="text" class="form-control form-control-sm" id="lastName" name="lastName" ngModel
+                  #lastName='ngModel' placeholder="Last Name" required>
                 <span *ngIf="!lastName.valid && (lastName.touched || lastName.dirty)" class="text-danger small">
                   <small *ngIf='lastName.errors["required"]'>lastName required</small>
                 </span>
               </div>
             </div>
           </div>
-          <div class="col-md-6">
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-4">
             <div class="form-group row">
               <label class="col-sm-5 col-form-label">Mobile Number</label>
               <div class="col-sm-7">
                 <input type="tel" class="form-control form-control-sm" id="userLoginId" name="userLoginId" ngModel
                   #userLoginId='ngModel' placeholder="Email" required>
-
                 <span *ngIf="!lastName.valid && (userLoginId.touched || userLoginId.dirty)" class="text-danger small">
                   <small *ngIf='userLoginId.errors["required"]'>userLoginId required</small>
                 </span>
               </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group row">
-              <label class="col-sm-5 col-form-label">Gender</label>
-              <div class="col-sm-7">
-                <div class="form-group row">
-                  <div class="col-sm-6">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="gender" id="gender" [(ngModel)]="gender"
-                          value="Male" checked=""> Male <i class="input-helper"></i></label>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="form-check">
-                      <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="gender" id="gender" [(ngModel)]="gender"
-                          value="Female"> Female <i class="input-helper"></i></label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
 
-          <div class="col-md-6">
+
+          <div class="col-md-4">
             <div class="form-group row">
               <label class="col-sm-5 col-form-label">Date of Birth</label>
               <div class="col-sm-7">
@@ -106,37 +76,136 @@
             </div>
           </div>
 
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="emailId">Email Id </label>
+              <div class="col-sm-7">
+
+                <input type="email" class="form-control form-control-sm" id="emailId" name="emailId" ngModel
+                  #emailId='ngModel' placeholder="Last Name" required>
+
+                <span *ngIf="!emailId.valid && (emailId.touched || emailId.dirty)" class="text-danger small">
+                  <small *ngIf='emailId.errors["required"]'>Email Id required</small>
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
 
-          <div class="row">
-            <div class="col-md-6">
-              <div class="form-group row">
-                <label class="col-sm-5 col-form-label" for="emailId">Email Id </label>
-                <div class="col-sm-7">
-  
-                  <input type="email" class="form-control form-control-sm" id="emailId" name="emailId" ngModel #emailId='ngModel'
-                    placeholder="Last Name" required>
-  
-                  <span *ngIf="!emailId.valid && (emailId.touched || emailId.dirty)" class="text-danger small">
-                    <small *ngIf='emailId.errors["required"]'>Email Id required</small>
-                  </span>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label">Gender</label>
+              <div class="col-sm-7">
+                <div class="form-group row">
+                  <div class="col-sm-6">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="gender" id="gender" [(ngModel)]="gender"
+                          value="Male" checked=""> M <i class="input-helper"></i></label>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="gender" id="gender" [(ngModel)]="gender"
+                          value="Female"> F<i class="input-helper"></i></label>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
+
+          <div class="col-md-8">
+            <!-- <div class="form-group float-right">
+                <button type="submit" class="btn btn-gradient-primary mr-2"
+                  [disabled]="!profile.valid">Submit</button>
+                <button class="btn btn-light" (click)="resetProfile(profile)">Cancel</button>
+              </div> -->
+
+
+
 
           </div>
 
-          <div class="row">
-              <div class="col-md-12">
-                <div class="form-group">
-                  <button type="submit" class="btn btn-gradient-primary mr-2"
-                    [disabled]="!profile.valid">Submit</button>
-                  <button class="btn btn-light" (click)="resetProfile(profile)">Cancel</button>
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-12">
+            <span class="input-group-btn">
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <div class="float-right">
+                    <button type="submit" class="btn btn-outline-dark btn-icon-text"
+                      [disabled]="productsForm.invalid">Add</button>
+                  </div>
                 </div>
               </div>
+            </span>
           </div>
-          
-       
+        </div>
+
+
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table  table-bordered table-sm table-responsive-md ">
+              <thead class="bg-inverse-dark text-white text-capitalize text-left">
+                <tr tabindex="0">
+                  <th>
+                    First Name
+                  </th>
+                  <th>
+                    Middle Name
+                  </th>
+                  <th class="text-center">
+                    Last Name
+                  </th>
+                  <th class="text-center">
+                    Mobile
+                  </th>
+                  <th class="text-center">
+                    Date of Birth
+                  </th>
+                  <th class="text-center">
+                    Email Id
+                  </th>
+                  <th class="text-center">
+                    Gender
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="py-1">
+                    Somnath
+                  </td>
+                  <td class="py-1">
+                    Muktaji
+                  </td>
+                  <td class="py-1">
+                    Sumbe
+                  </td>
+                  <td class="py-1">
+                    +91 9028787219
+                  </td>
+                  <td class="py-1">
+                    10-11-1987
+                  </td>
+                  <td class="py-1">
+                    Somasumbe@gmail.com
+                  </td>
+                  <td class="py-1">
+                    Male
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
       </form>
     </div>
   </div>
