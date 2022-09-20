@@ -1,69 +1,120 @@
-import { Component, OnInit } from "@angular/core";
-import { LoginService } from "src/app/administration/services/login.service";
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { MastersService } from 'src/app/shared/service/masters.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: "app-bankdetails",
-  templateUrl: "./bankdetails.component.html",
-  styleUrls: ["./bankdetails.component.css"],
+  selector: 'app-bankdetails',
+  templateUrl: './bankdetails.component.html',
+  styleUrls: ['./bankdetails.component.css'],
+  preserveWhitespaces: true
 })
+
 export class BankdetailsComponent implements OnInit {
-  Banks: string[] = [
-    "Allahabad Bank",
-    "Andhra Bank",
-    "Bank of India",
-    "Bank of Baroda",
-    "Bank of Maharashtra",
-    "Canara Bank",
-    "Central Bank of India",
-    "Corporation Bank",
-    "Dena Bank",
-    "Indian Bank",
-    "Indian Overseas Bank",
-    "IDBI Bank",
-    "Oriental Bank of Commerce",
-    "Punjab & Sindh Bank",
-    "Punjab National Bank",
-    "State Bank of India",
-    "Syndicate Bank",
-    "UCO Bank",
-    "Union Bank of India",
-    "United Bank of India",
-    "Vijaya Bank",
-  ];
-  Cityes: any[] = [];
-  bankForm;
-  msgState:boolean;
-  errorMsg:string;
-  constructor(private _login: LoginService) { }
+  public partiesList: any[] = [];
+  public bankForm: FormGroup;
+  public cityList: any[] = [];
+  public bankList: any[] = [];
+  public partybankDetailList: any[] = [];
+  public editBankId: number;
+  constructor(
+    private masterService: MastersService,
+    private toastr: ToastrService,
+    private formBuilder: FormBuilder
+  ) { }
   ngOnInit(): void {
-    this.getBankData();
-    this.getCityData();
+    this.bankForm = this.formBuilder.group({
+      bankId: [null],
+      customerId: ['', Validators.required],
+      bankName: ['', Validators.required],
+      address: ['', Validators.required],
+      ifscCode: ['', Validators.required],
+      accountNumber: ['', Validators.required],
+      cityName: ['', Validators.required]
+    });
+    this.editBankId = null;
+    this.getBankList();
+    this.getCityList();
+    this.getPartyList();
+    this.getAllBankDetailList();
   }
 
-
-  getBankData() {
-    //   this._login.bankDetailsList().subscribe(data =>{
-    //    this.Banks=data;
-    //    console.log(this.Banks);
-    //  })
+  private getPartyList(): void {
+    this.masterService.fetchDetails('/customer').subscribe(Response => {
+      this.partiesList = Response.map((item) => {
+        const obj = {
+          label: item.firmName,
+          value: item.customerId
+        };
+        return obj;
+      });
+    }, (error: Error): void => {
+      this.toastr.error('Something wents wrong...');
+    });
   }
-  getCityData() {
-    this._login.AllBankList().subscribe(city => {
-      this.Cityes = city;
-    })
+
+  private getBankList(): void {
+    this.masterService.fetchDetails('/master/bankNames').subscribe(bankdata => {
+      this.bankList = bankdata;
+    }, (error: Error): void => {
+      this.toastr.error('Something wents wrong...');
+    });
   }
 
-  bankDetailsData(bankform: any) {
-    this.bankForm=bankform.value;
-    delete this.bankForm.cityId; 
-    console.log(delete this.bankForm.cityId);
-    this.bankForm["city"] = {"cityId" : parseInt(bankform.form.controls.cityId.value)};
-    this._login.saveBankDetails(this.bankForm).subscribe((bankdata)=>{
-      bankdata;
-      if (bankdata) {
-        this.msgState=true;
-        this.errorMsg = "Banks Details  saved successfully"
+  private getCityList(): void {
+    this.masterService.fetchDetails('location?pageNumber=0&maxCount=100').subscribe(Response => {
+      this.cityList = Response;
+    }, (error: Error): void => {
+      this.toastr.error('Something wents wrong...');
+    });
+  }
+
+  private getAllBankDetailList(): void {
+    this.masterService.fetchDetails('bank').subscribe(Response => {
+      this.partybankDetailList = Response['1'];
+      console.log(this.partybankDetailList);
+    }, (error: Error): void => {
+      this.toastr.error('Something wents wrong...');
+    });
+  }
+
+  public bankDetailsData(bankform: any): void {
+    console.log(bankform.value);
+    this.masterService.addEditDetails('bank', bankform.value).subscribe((Response) => {
+      console.log(Response);
+      if (Response) {
+        if (this.editBankId) {
+          this.toastr.success('Bank details updated successfully');
+        } else {
+          this.toastr.success('Bank details saved successfully');
+        }
+        this.getAllBankDetailList();
+        this.resetbankform();
+      } else {
+        this.toastr.error('Something wents wrong...');
       }
-    })
+    }, (error: Error): void => {
+      this.toastr.error('Something wents wrong...');
+    });
+  }
+
+  public resetbankform(): void {
+    this.bankForm = this.formBuilder.group({
+      bankId: [null],
+      customerId: [''],
+      bankName: [''],
+      address: [''],
+      ifscCode: [''],
+      accountNumber: [''],
+      cityName: ['']
+    });
+    this.editBankId = null;
+  }
+
+  public editBankDetails(bankData: any): void {
+    console.log(bankData);
+    this.editBankId = bankData.bankId;
+    this.bankForm.patchValue(bankData);
+    this.bankForm.controls['customerId'].disable();
   }
 }

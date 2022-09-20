@@ -1,31 +1,31 @@
 <div class="col-12">
   <div class="card">
     <div class="card-body">
-      <h4 class="card-title">HSN Details</h4>
+      <h4 class="card-title text-capitalize">HSN details</h4>
       <form class="form-sample" [formGroup]="hsnForm" (ngSubmit)="addEditHSNDetails(hsnForm)">
 
         <div class="row">
           <div class="col-md-5">
             <div class="form-group row">
-              <label class="col-sm-5 col-form-label" for="hsnCategory">HSN Category</label>
+              <label class="col-sm-5 col-form-label text-capitalize" for="code">HSN Category</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control form-control-sm" name="hsnCategory" formControlName="hsnCategory"
+                <input type="text" class="form-control form-control-sm text-capitalize" name="code" formControlName="code"
                   placeholder="HSN Category ">
 
                 <input type="hidden" name="hsnId" *ngIf="hsnid">
-                <small class="text-danger"
-                  *ngIf="!hsnForm.get('hsnCategory').valid && hsnForm.get('hsnCategory').touched">Please enter valid
-                  hsnCategory</small>
+                <small class="text-danger text-capitalize"
+                  *ngIf="!hsnForm.get('code').valid && hsnForm.get('code').touched">Please enter valid
+                  code</small>
               </div>
             </div>
 
           </div>
           <div class="col-md-5">
             <div class="form-group row">
-              <label class="col-sm-5 col-form-label" for="description">Description</label>
+              <label class="col-sm-5 col-form-label text-capitalize" for="value">value</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control form-control-sm" name="description" formControlName="description"
-                  placeholder="Description">
+                <input type="text" class="form-control form-control-sm text-capitalize" name="value" formControlName="value"
+                  placeholder="value">
               </div>
             </div>
           </div>
@@ -33,7 +33,7 @@
           <div class="col-md-2">
             <div class="form-group row">
               <div class="col-md-12">
-                <button type="submit" class="btn btn-md btn-gradient-dark  mb-2 float-right"
+                <button type="submit" class="btn btn-outline-dark btn-icon-text  mb-2 float-right"
                   [disabled]="!hsnForm.valid">{{hsnid? 'Update' : 'Add'}}
                 </button>
               </div>
@@ -41,66 +41,72 @@
           </div>
         </div>
       </form>
+    </div>
+  </div>
+</div>
 
-      <div class="row">
-        <div class="col-md-5">
-          <div class="form-group ">
-            <div class="input-group">
-              <input type="text" class="form-control form-control-sm" [(ngModel)]="search"
-                placeholder="Search By  Category " aria-label="Recipient's username" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                    <button class="btn btn-sm btn-gradient-dark" type="button"> <i
-                    class="mdi mdi-account-search"></i></button>
+
+<div class="col-md-12 mt-3">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header1 bg-behance text-white">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mt-3 text-capitalize"> Transport Details List</div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group ">
+                <div class="input-group">
+                  <input type="text" class="form-control form-control-sm mt-2 text-capitalize " [(ngModel)]="search"
+                    placeholder="Search By  Product Name " aria-label="Recipient's username"
+                    aria-describedby="basic-addon2">
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+        <div class="card-body border">
 
-      <div class="row">
-        <div class="col-md-12">
-          <table class="table  table-bordered table-sm table-responsive-md ">
-            <thead class="bg-inverse-dark text-white">
-              <tr tabindex="0">
-                <th>
-                  HSN Category
-                </th>
-                <th>
-                  Description
-                </th>
-                <th>
-                  Created Date
-                </th>
-                <th class="text-center">
-                  Actions
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr
-                *ngFor="let hsnList of hsnLists |SearchFilter :search: 'hsnCategory'| paginate: { id: 'Medicine',itemsPerPage:5,currentPage: page,totalItems: totalRecords} ">
-                <td class="py-1">
-                  {{hsnList.hsnCategory}}
-                </td>
-                <td>
-                  {{hsnList.description |titlecase}}
-                </td>
-                <td>
-                  {{hsnList.createdDate |date}}
-                </td>
-                <td class="text-center" style="width:120px; ">
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table  table-bordered table-sm table-responsive-md ">
+                <thead class="bg-inverse-dark text-white text-capitalize">
+                  <tr tabindex="0">
+                    <th>
+                      HSN Category
+                    </th>
+                    <th>
+                      value
+                    </th>
+                    <th class="text-center">
+                      Actions
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    *ngFor="let hsnList of hsnLists |SearchFilter :search: 'code'| paginate: { id: 'Medicine',itemsPerPage:5,currentPage: page,totalItems: totalRecords} ">
+                    <td class="py-1">
+                      {{hsnList.code}}
+                    </td>
+                    <td>
+                      {{hsnList.value |titlecase}}
+                    </td>
+                    <td class="text-center" style="width:120px; ">
+    
+                      <label class="badge badge-dark bg-inverse-dark arrowpointer btn-block "
+                        (click)="editHsnDetails(hsnList)">Edit</label>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <pagination-controls class="float-right mt-3" id="Medicine" maxSize="5" directionLinks="true"
+                (pageChange)="page= $event"></pagination-controls>
+            </div>
+          </div>
 
-                  <label class="badge badge-dark bg-inverse-dark arrowpointer "
-                    (click)="editHsnDetails(hsnList)">Edit</label>
-                  <label class="arrowpointer badge bg-danger bg-inverse-dark text-white"
-                    (click)="editHsnDetails(hsnList)">View</label>
 
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <pagination-controls class="float-right mt-3" id="Medicine" maxSize="5" directionLinks="true"
-            (pageChange)="page= $event"></pagination-controls>
         </div>
       </div>
     </div>

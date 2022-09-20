@@ -1,0 +1,340 @@
+<div class="col-12"  *ngIf="!IsOrderView;else orderView">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Order Details</h4>
+      <form class="form-sample" [formGroup]="orderForm" (ngSubmit)="addEditOrderDetails(orderForm)">
+
+        <div class="row">
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="productId">Product Name</label>
+              <div class="col-sm-7">
+                <select class="form-control form-control-sm" name="productId" formControlName="productId">
+                  <option value=""> Select Product</option>
+                  <option *ngFor="let product of products" [ngValue]="product.productId">
+                  {{ product.productName}}
+                  </option>
+                </select>
+
+                <input type="hidden" name="orderId" *ngIf="orderId">
+                <input type="hidden" name="orderType">
+                <small class="text-danger" *ngIf="!orderForm.get('productId').valid && orderForm.get('productId').touched">Please select product</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="customer">Customer Name</label>
+              <div class="col-sm-7">
+                <select class="form-control form-control-sm" name="customer" formControlName="customer">
+                  <option value=" "> Select Customer</option>
+                  <option *ngFor="let customer of customers" [ngValue]="customer.customerId">
+                  {{ customer.firstName}}{{ customer.middleName}}{{ customer.lastName}}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="orderDate">Order Date </label>
+              <div class="col-sm-7">
+                <input type="date" class="form-control form-control-sm" name="orderDate" formControlName="orderDate"
+                  placeholder="Order Date">
+                  <small class="text-danger"
+                  *ngIf="!orderForm.get('orderDate').valid && orderForm.get('orderDate').touched">Please select valid
+                  Order date</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="orderQuantity">Order Quantity</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control form-control-sm" name="orderQuantity" formControlName="orderQuantity"
+                  placeholder="Order Quantity">
+                  <small class="text-danger"
+                  *ngIf="!orderForm.get('orderQuantity').valid && orderForm.get('orderQuantity').touched">Please enter Order
+                  Quantity</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="orderAddress">Delivery Address</label>
+              <div class="col-sm-7">
+                <input type="tel" class="form-control form-control-sm" name="orderAddress" formControlName="orderAddress"
+                  placeholder="Address">
+                  <small class="text-danger"
+                  *ngIf="!orderForm.get('orderAddress').valid && orderForm.get('orderAddress').touched">Please enter valid
+                  Address</small>
+              </div>
+            </div>
+          </div>
+         
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="billNumber">Bill Number</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control form-control-sm" name="billNumber" formControlName="billNumber"
+                  placeholder="Bill Number">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="billDate">Bill Date </label>
+              <div class="col-sm-7">
+                <input type="date" class="form-control form-control-sm" name="billDate" formControlName="billDate"
+                  placeholder="Bill Date">
+                  <small class="text-danger"
+                  *ngIf="!orderForm.get('billDate').valid && orderForm.get('billDate').touched">Please select valid
+                  Bill date</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="mrp">Product MRP</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control form-control-sm" name="mrp" formControlName="mrp"
+                  placeholder="Product MRP" (focus)="calculateTotalAmount()">
+                  <small class="text-danger"
+                  *ngIf="!orderForm.get('mrp').valid && orderForm.get('mrp').touched">Please enter product price</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="sellRate">Product Sale Rate</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control form-control-sm" name="sellRate" formControlName="sellRate"
+                  placeholder="Product Sale Rate" (focus)="calculateTotalAmount()">
+                  <small class="text-danger"
+                  *ngIf="!orderForm.get('sellRate').valid && orderForm.get('sellRate').touched">Please enter Product sale rate</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="gstAmount">GST Amount</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control form-control-sm" name="gstAmount" formControlName="gstAmount"
+                  placeholder="GST Amount" (focus)="calculateTotalAmount()">
+                  <small class="text-danger"
+                  *ngIf="!orderForm.get('gstAmount').valid && orderForm.get('gstAmount').touched">Please enter GST Amount</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="discountAmount">Applicable Discount Amount</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control form-control-sm" name="discountAmount" formControlName="discountAmount"
+                  placeholder="Applicable Discount" (focus)="calculateTotalAmount()">
+               </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="totalAmount">Total Amount</label>
+              <div class="col-sm-7">
+                <input type="number" class="form-control form-control-sm" name="totalAmount" formControlName="totalAmount"
+                  placeholder="Total Amount" (focus)="calculateTotalAmount()">
+                  <small class="text-danger"
+                  *ngIf="!orderForm.get('totalAmount').valid && orderForm.get('totalAmount').touched">Please enter Total Amount</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="paymentMode">Payment Method</label>
+              <div class="col-sm-7">
+                <select class="form-control form-control-sm" name="paymentMode" formControlName="paymentMode">
+                  <option value="">Select Payment Method</option>
+                  <option value="Cash">By Cash</option>
+                  <option value="Cheque">By Cheque</option>
+                  <option value="Other">Other</option>
+                </select>
+                <small class="text-danger" *ngIf="!orderForm.get('paymentMode').valid && orderForm.get('paymentMode').touched">Please select payment method</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="scheme">Scheme</label>
+              <div class="col-sm-7">
+                <select class="form-control form-control-sm" name="scheme" formControlName="scheme">
+                  <option value="">Select Scheme</option>
+                  <option value="Scheme_1">Scheme_1</option>
+                  <option value="Scheme_2">Scheme_2</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="unitOfMeasure">Unit Of Measure</label>
+              <div class="col-sm-7">
+                <select class="form-control form-control-sm" name="unitOfMeasure" formControlName="unitOfMeasure"
+                  placeholder="">
+                  <option value="">Select Unit Of Measure</option>
+                  <option value="NOS">Numbers</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group row">
+              <label class="col-sm-5 col-form-label" for="transportation">Transportation</label>
+              <div class="col-sm-7">
+                <select class="form-control form-control-sm" name="transportation" formControlName="transportation">
+                  <option value=" "> Select Transport </option>
+                  <option *ngFor="let transport of transports" [ngValue]="transport.transportId">
+                  {{ transport.transportName}}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 float-right">
+           
+            <button type="submit" class="btn btn-outline-dark btn-icon-text" [disabled]="!orderForm.valid">{{orderId? 'Update' : 'Add'}}</button>
+            <button type="button" class="btn btn-outline-success btn-fw" (click)="showOrderView()">View</button>
+            <button type="reset" class="btn btn-outline-warning btn-icon-text">Reset</button>
+                 
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<ng-template #orderView>
+  <div class="col-md-12 mt-3">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header bg-behance text-white">
+            <div class="row">
+              <div class="col-md-6">
+                <h4 class="mt-2">Orders </h4>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group ">
+                  <div class="input-group">
+                    <input type="text" class="form-control form-control-sm " [(ngModel)]="search"
+                      placeholder="Search By Order Type " aria-label="Order Type"
+                      aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-sm btn-gradient-dark" type="button"> <i
+                          class="mdi mdi-account-search"></i></button>
+               </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body border">
+            <div class="w3-padding w3-white notranslate">
+              <div class="card bg-yellow-gradient text-dark" [ngClass]="{'bg-light ': odd}"
+                *ngFor="let order of orders | paginate: { id: 'Medicine',itemsPerPage:2,currentPage: page,totalItems: totalRecords} ;let odd=odd;">
+                <div class="card-body shadow my-3">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <h4>Order Date : {{order.orderDate | uppercase | date}}
+                        <button type="button"
+                          class="btn btn-outline-dark btn-icon-text float-right" (click)="editPageShow(order)">Edit</button>
+                      </h4>
+                      <h4>Order Type : {{order.orderType}}</h4>
+                     
+                      <h4>Customer Details :</h4>
+                      <div [innerHTML] ="getCustomerDetails(order.customer)">
+
+                      </div>
+                      <div class="clearfix"></div>
+                      <hr>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Bill Number <code class="text-dark">: {{order.billNumber}} </code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                      Bill Date <code class="text-dark">: {{order.billDate | date}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Product Name <code class="text-dark">: {{getProductDetails(order.productId)}}</code>
+                      </div>
+                    </div> 
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                      Product Quantity <code class="text-dark">: {{order.orderQuantity}}</code>
+                      </div>
+                    </div>  
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                      Product MRP <code class="text-dark">: {{order.mrp}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                      Product Sale Rate <code class="text-dark">: {{order.sellRate}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Applied Scheme <code class="text-dark">: {{order.scheme}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4" *ngIf="order.discountAmount">
+                      <div class="card-description text-info  mb-3">
+                        Discount <code class="text-dark">: {{order.discountAmount}} %</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Payment Method <code class="text-dark">: {{order.paymentMode}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Total Amount <code class="text-dark">: {{order.totalAmount}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Delivery Address <code class="text-dark">: <Address>{{order.orderAddress}}</Address></code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Unit Of Measure <code class="text-dark">: {{order.unitOfMeasure}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        GST Amount <code class="text-dark">:
+                          {{order.gstAmount}}</code>
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="card-description text-info  mb-3">
+                        Transportation <code class="text-dark">: {{getTransportDetails(order.transportation)}}</code>
+                      </div>
+                    </div>
+                   </div>
+                </div>
+              </div>
+            </div>
+            <pagination-controls class="float-right mt-3" id="Medicine" maxSize="2" directionLinks="true"
+              (pageChange)="page= $event"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

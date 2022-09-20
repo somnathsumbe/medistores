@@ -12,10 +12,11 @@ import { MastersService } from 'src/app/shared/service/masters.service';
 export class HNSDetailsComponent implements OnInit {
   hsnLists = [];
   hsnForm: FormGroup;
-  hsnid: number;
+  code: number;
   search: string = '';
   totalRecords: string;
-  page: number
+  page: number;
+  hsnid:boolean;
 
   constructor( 
     private formBuilder: FormBuilder, 
@@ -25,22 +26,24 @@ export class HNSDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.gethsnDetails();
-    this.hsnForm = new FormGroup({
-      hsnCategory: new FormControl(null, Validators.required),
-      description: new FormControl(null),
-      hsnId: new FormControl(null)
+    this.hsnForm =this.formBuilder.group({
+      code:['',Validators.required],
+      value:[''],
+      hsnid:[''],
+
     });
   }
 
   gethsnDetails() {
-    this.masterService.fetchDetails('hsnList').subscribe(HsnList => {
+    this.masterService.fetchDetails('/master/hsn').subscribe(HsnList => {
+      debugger;
       this.hsnLists = HsnList;
       this.totalRecords = HsnList.length;
     })
   }
 
-  addEditHSNDetails(hsnForm: any) {
-    this.masterService.addEditDetails('saveHsn', hsnForm.value).subscribe((res) => {
+  addEditHSNDetails(hsnForm: any) {;
+    this.masterService.addEditDetails('/master/hsn', hsnForm.value).subscribe((res) => {
       if (res) {
         this.gethsnDetails();
         this.hsnForm.reset(this.hsnForm.value);
@@ -52,11 +55,11 @@ export class HNSDetailsComponent implements OnInit {
     })
   }
 
-  editHsnDetails(hsnList) {
-    this.hsnid = hsnList.hsnId;
-    this.hsnForm.controls['hsnId'].setValue(hsnList.hsnId);
-    this.hsnForm.controls['hsnCategory'].setValue(hsnList.hsnCategory);
-    this.hsnForm.controls['description'].setValue(hsnList.description);
-  }
 
+
+
+  editHsnDetails(hsnList) {
+    this.code= hsnList.code;
+    this.hsnForm.patchValue(hsnList);
+  }
 }
